@@ -10,6 +10,8 @@ import notepadplaner.models.TodoListItem;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.SimpleTimeZone;
 
 public class NotepadPlanerApplication extends Application {
     @Override
@@ -28,8 +30,17 @@ public class NotepadPlanerApplication extends Application {
         // Note myNote1 = new Note("This is title", "This is content");
         // myNote1.saveToFile();
 
-        // Get
+        // Get one
         // Note myNote2 = Note.get(0);
+
+        // Get all
+        /*
+        ArrayList<Note> notes = Note.getAll();
+        for (Note note : notes) {
+            System.out.println();
+            note.print();
+        }
+        */
 
         // Edit
         // Note myNote3 = Note.get(0);
@@ -38,7 +49,6 @@ public class NotepadPlanerApplication extends Application {
 
         // Delete
         // Note.delete(2);
-
 
         // Saving TodoList example
         /*

@@ -23,6 +23,17 @@ public class Note extends Model {
         return new Note(data.get(index), data.get(index + 1));
     }
 
+    public static ArrayList<Note> getAll() {
+        ArrayList<Note> notes = new ArrayList<>();
+        ArrayList<String> data = loadFile(fileName);
+
+        for (int i = 0; i < data.size() / 2; i++) {
+            notes.add(new Note(data.get(i * 2), data.get(i * 2 + 1)));
+        }
+
+        return notes;
+    }
+
     public static void delete(int index) {
         ArrayList<String> data = loadFile(fileName);
 
