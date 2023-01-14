@@ -1,3 +1,4 @@
+/*
 package notepadplaner.notepadplaner;
 
 public class Note {
@@ -22,3 +23,4 @@ public class Note {
         body = text;
     }
 }
+*/
