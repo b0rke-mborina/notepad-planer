@@ -13,8 +13,8 @@ public class Note extends Model {
         this.note = note;
     }
 
-    public void saveToFile() {
-        saveToFile(fileName, new String[] {title, note});
+    public static void saveToFile(Note note) {
+        saveToFile(fileName, new String[] {note.title, note.note});
     }
 
     public static Note get(int index) {
@@ -53,7 +53,7 @@ public class Note extends Model {
     }
 
     public void print() {
-        System.out.println("Title: " + title);
-        System.out.println("Note: " + note);
+        System.out.println("[Note] Title: " + title);
+        System.out.println("[Note] Note: " + note);
     }
 }

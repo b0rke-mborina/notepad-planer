@@ -10,11 +10,16 @@ public class TodoListItem extends Model {
     }
 
     public TodoListItem(String text, boolean checked) {
-        this.checked = checked;
         this.text = text;
+        this.checked = checked;
     }
 
     public String toString() {
         return checked ? "1" : "0" + text;
+    }
+
+    public void print() {
+        System.out.println("[TODO ListItem] Text: " + text);
+        System.out.println("[TODO ListItem] Checked: " + (checked ? "true" : "false"));
     }
 }

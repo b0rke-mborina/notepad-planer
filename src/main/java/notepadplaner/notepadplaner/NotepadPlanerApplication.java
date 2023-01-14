@@ -24,49 +24,76 @@ public class NotepadPlanerApplication extends Application {
     }
 
     public static void main(String[] args) {
-        // launch();
+        launch();
+    }
 
-        // Create model
-        // Note myNote1 = new Note("This is title", "This is content");
-        // myNote1.saveToFile();
+    private static void crudExampleNotes() {
+        // Get one Note
+        Note note2 = Note.get(0);
+        note2.print();
 
-        // Get one
-        // Note myNote2 = Note.get(0);
-
-        // Get all
-        /*
-        ArrayList<Note> notes = Note.getAll();
-        for (Note note : notes) {
+        // Get all Notes
+        ArrayList<Note> allNotes = Note.getAll();
+        for (Note note : allNotes) {
             System.out.println();
             note.print();
         }
-        */
 
-        // Edit
-        // Note myNote3 = Note.get(0);
-        // myNote3.note = "Changed note";
-        // Note.edit(0, myNote3);
+        // Create Note
+        Note note1 = new Note("This is title", "This is content");
+        Note.saveToFile(note1);
 
-        // Delete
-        // Note.delete(2);
+        // Edit Note
+        Note note3 = Note.get(0);
+        note3.note = "Changed note";
+        Note.edit(0, note3);
 
-        // Saving TodoList example
-        /*
-        TodoList myTodoList = new TodoList("Test title", new TodoListItem[] {
+        // Delete Note
+        Note.delete(0);
+    }
+
+    private static void crudExampleTodoList() {
+        // Get TodoList
+        TodoList todoList2 = TodoList.get(0);
+        todoList2.print();
+
+        // Get all TodoList
+        ArrayList<TodoList> allTodoLists = TodoList.getAll();
+        for (TodoList todoList : allTodoLists) {
+            System.out.println();
+            todoList.print();
+        }
+
+        // Create TodoList
+        TodoList todoList1 = new TodoList("Test title", new TodoListItem[] {
             new TodoListItem("Item 1"),
             new TodoListItem("Item 2"),
             new TodoListItem("Item 3"),
         });
-        myTodoList.saveToFile();
-        */
-
-        // Get TodoList example
-        TodoList myTodoList = TodoList.get(2);
+        todoList1.saveToFile();
 
         // Edit TodoList example
-        // ... to be continued
+        TodoList todoList3 = TodoList.get(0);
+        todoList3.title = "Edited title";
+        todoList3.items[2].text = "random";
+        todoList3.items[0].checked = true;
+        TodoList.edit(0, todoList3);
 
         // Delete TodoList
-        // ... to be continued
+        TodoList.delete(0);
+    }
+
+    private static void crudExampleTodoListItem() {
+        // Add item on List
+        // ...
+
+        // Edit item on List
+        // ...
+
+        // Remove item from list
+        // ...
+
+        // Todo: Create crud operation on TodoListItems
+        // Todo: Error handling + custom exceptions
     }
 }

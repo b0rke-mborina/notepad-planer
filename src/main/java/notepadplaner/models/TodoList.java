@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.SimpleTimeZone;
 
 public class TodoList extends Model {
     public String title;
@@ -32,6 +33,36 @@ public class TodoList extends Model {
         return listItemsString;
     }
 
+    public static ArrayList<TodoList> getAll() {
+        ArrayList<TodoList> todoLists = new ArrayList<>();
+        ArrayList<String> data = loadFile(fileName);
+        ArrayList<TodoListItem> listItems = new ArrayList<>();
+        String title = "";
+
+        int dataIndex = 0;
+
+        System.out.println(data.size());
+        while (data.size() > dataIndex) {
+            String row = data.get(dataIndex);
+            if (data.get(dataIndex).charAt(0) == '-') {
+                title = row.substring(1);
+            }
+            else {
+                listItems.add(new TodoListItem(row.substring(1), row.charAt(0) == '1'));
+            }
+            if (data.size() - dataIndex < 2) {
+                todoLists.add(new TodoList(title, listItems.toArray(new TodoListItem[0])));
+            }
+            else if (data.get(dataIndex + 1).charAt(0) == '-') {
+                todoLists.add(new TodoList(title, listItems.toArray(new TodoListItem[0])));
+                listItems = new ArrayList<>();
+            }
+            dataIndex++;
+        }
+
+        return todoLists;
+    }
+
     public static TodoList get(int index) {
         ArrayList<String> data = loadFile(fileName);
         int counter = 0;
@@ -48,30 +79,77 @@ public class TodoList extends Model {
             dataIndex++;
         }
 
-        System.out.println(data.get(dataIndex));
+        String title = data.get(dataIndex).substring(1);
+        ArrayList<TodoListItem> listItems = new ArrayList<>();
+        dataIndex++;
 
-        return new TodoList("", new TodoListItem[] {});
+        while (data.size() >= dataIndex + 1 && data.get(dataIndex).charAt(0) != '-') {
+            String row = data.get(dataIndex);
+            listItems.add(new TodoListItem(row.substring(1), row.charAt(0) == '1'));
+            dataIndex++;
+        }
+
+        return new TodoList(title, listItems.toArray(new TodoListItem[0]));
     }
-    /*
+
     public static void delete(int index) {
         ArrayList<String> data = loadFile(fileName);
+        int counter = 0;
+        int dataIndex = 0;
+        for (String row : data) {
+            if (row.charAt(0) == '-') {
+                counter++;
+            }
 
-        data.remove(index * 2);
-        data.remove(index * 2);
+            if (counter > index) {
+                break;
+            }
+
+            dataIndex++;
+        }
+
+        data.remove(dataIndex);
+
+        while (data.size() > dataIndex + 1 && data.get(dataIndex).charAt(0) != '-') {
+            data.remove(dataIndex);
+        }
 
         saveToFile(fileName, data.toArray(new String[0]), true);
     }
 
-    public static void edit(int index, Note noteObj) {
+    public static void edit(int index, TodoList todoListObj) {
         ArrayList<String> data = loadFile(fileName);
+        int counter = 0;
+        int dataIndex = 0;
+        for (String row : data) {
+            if (row.charAt(0) == '-') {
+                counter++;
+            }
 
-        data.set(index * 2, noteObj.title);
-        data.set(index * 2 + 1, noteObj.note);
+            if (counter > index) {
+                break;
+            }
+
+            dataIndex++;
+        }
+
+        data.set(dataIndex, "-" + todoListObj.title);
+        dataIndex++;
+        int startIndex = dataIndex;
+
+        while (data.size() > dataIndex + 1 && data.get(dataIndex).charAt(0) != '-') {
+            data.set(dataIndex, todoListObj.items[dataIndex - startIndex].toString());
+            dataIndex++;
+        }
 
         saveToFile(fileName, data.toArray(new String[0]), true);
-    }*/
+    }
 
     public void print() {
-        System.out.println("Title: " + title);
+        System.out.println("[TODO List] Title: " + title);
+
+        for (TodoListItem item: items) {
+            item.print();
+        }
     }
 }
