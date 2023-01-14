@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.skin.SplitPaneSkin.ContentDivider?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefWidth="240.0"
+            VBox.vgrow="ALWAYS"
+            style="-fx-background-color: red; -fx-max-width: 240px;">
+        <VBox spacing="8">
+                <VBox style="-fx-background-color: green;" prefWidth="240.0" VBox.vgrow="ALWAYS" alignment="CENTER">
+                        <padding>
+                                <Insets bottom="20.0" top="20.0"/>
+                        </padding>
+                        <Text text="Notepad" textAlignment="CENTER"
+                              style="-fx-max-width: 240px; -fx-font-size: 30px; -fx-font-weight: bold" />
+                        <Text text="Planer" textAlignment="CENTER"
+                              style="-fx-max-width: 240px; -fx-font-size: 30px; -fx-font-weight: bold" />
+                </VBox>
+                <VBox style="-fx-background-color: green;" prefWidth="240.0" VBox.vgrow="ALWAYS" spacing="8">
+                        <padding>
+                                <Insets top="20.0" bottom="20.0" left="20.0" right="20.0" />
+                        </padding>
+                        <Label text="Notes" style="-fx-font-size: 20px" />
+                        <Label text="To-do lists" style="-fx-font-size: 20px" />
+                </VBox>
+        </VBox>
+</AnchorPane>

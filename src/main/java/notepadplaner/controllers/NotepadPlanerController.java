@@ -1,4 +1,4 @@
-package notepadplaner.notepadplaner;
+package notepadplaner.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
