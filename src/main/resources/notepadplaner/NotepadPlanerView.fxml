@@ -8,18 +8,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.stage.Screen?>
 <?import javafx.scene.text.Text?>
-<HBox xmlns:fx="http://javafx.com/fxml"
+<VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="notepadplaner.NotepadPlanerApplication"
-      VBox.vgrow="ALWAYS"
-      style="-fx-background-color: yellow"> <!-- controllers.NotepadPlanerController -->
-    <!-- <Label fx:id="welcomeText"/> -->
-    <!-- <Button text="Hello!" onAction="#onHelloButtonClick"/> -->
-    <!-- <Button text="Hello!"/> -->
-    <fx:include source="components/NavBar.fxml"/>
-    <HBox style="-fx-background-color: white" maxHeight="120" alignment="CENTER" HBox.hgrow="ALWAYS">
-        <padding>
-            <Insets top="20.0" bottom="20.0" />
-        </padding>
-        <Text text="Notes" textAlignment="CENTER" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
-    </HBox>
-</HBox>
+      VBox.vgrow="ALWAYS" alignment="CENTER" spacing="20"
+      style="-fx-background-color: yellow">
+        <HBox alignment="CENTER">
+                <padding>
+                        <Insets top="0.0" bottom="40.0" left="0.0" right="0.0" />
+                </padding>
+                <Text text="Notepad planer" style="-fx-font-weight: bold; -fx-font-size: 40px" />
+        </HBox>
+        <HBox alignment="CENTER" spacing="40">
+                <Button fx:id="notesButton" mnemonicParsing="false" onAction="#goToNotes" text="Notes"
+                        prefHeight="100" prefWidth="200" style="-fx-font-size: 20px" />
+                <Button fx:id="toDoListsButton" mnemonicParsing="false" onAction="#goToToDoLists" text="To-do lists"
+                        prefHeight="100" prefWidth="200" style="-fx-font-size: 20px" />
+        </HBox>
+        <HBox alignment="CENTER">
+                <Text text="Select option to start..." style="-fx-font-size: 16px" />
+        </HBox>
+</VBox>
