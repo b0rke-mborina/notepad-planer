@@ -4,29 +4,32 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Hyperlink;
 import javafx.stage.Stage;
-import notepadplaner.controllers.NotesController;
 import notepadplaner.models.Note;
 import notepadplaner.models.TodoList;
 import notepadplaner.models.TodoListItem;
-
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.SimpleTimeZone;
 
 public class NotepadPlanerApplication extends Application {
+    private static NotepadPlanerApplication applicationInstance;
     private Stage stage;
-    // private BorderPane layout;
     @FXML
     private Button notesButton;
     @FXML
     private Button toDoListsButton;
+
+    public static NotepadPlanerApplication getApplicationInstance() {
+        return applicationInstance;
+    }
+
+    @Override
+    public void init() {
+        applicationInstance = this;
+    }
 
     @Override
     public void start(Stage stage) {
@@ -37,22 +40,32 @@ public class NotepadPlanerApplication extends Application {
             this.stage.setTitle("Notepad planer");
             this.stage.setMinWidth(720);
             this.stage.setMinHeight(360);
-
-            // layout = new BorderPane();
-            // layout.setLeft(new BorderPane(new Button("OK")));
-            // setView(viewOne);
-
-            // FXMLLoader loaderNavBar = new FXMLLoader(getClass().getResource("components/NavBar.fxml"));
-            // fxmlLoader.setController(new CustomElementController()); //Or just specify the Controller in the FXML file
-            // stage.getChildren().add(fxmlLoader.load());
-
-            // notesButton = new Button();
-            // notesButton.setOnAction(e -> {
-                // System.out.println("Notes button clicked.");
-            // });
-
             this.stage.setScene(scene);
             this.stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void changeScene(String url, Button button) {
+        try {
+            Scene currentScene = button.getScene();
+            Stage currentStage = (Stage)currentScene.getWindow();
+
+            Parent newScene = new FXMLLoader(getClass().getResource(url)).load();
+            currentStage.setScene(new Scene(newScene, currentScene.getWidth(), currentScene.getHeight()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void changeScene(String url, Hyperlink hyperlink) {
+        try {
+            Scene currentScene = hyperlink.getScene();
+            Stage currentStage = (Stage)currentScene.getWindow();
+
+            Parent newScene = new FXMLLoader(getClass().getResource(url)).load();
+            currentStage.setScene(new Scene(newScene, currentScene.getWidth(), currentScene.getHeight()));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,41 +74,13 @@ public class NotepadPlanerApplication extends Application {
     @FXML
     public void goToNotes(ActionEvent event) {
         System.out.println("Notes button clicked.");
-        Parent root;
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("controllers/NotesView.fxml"));
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Notepad planer");
-            stage.setMinWidth(720);
-            stage.setMinHeight(360);
-            stage.setScene(new Scene(root, 1440, 720));
-            stage.show();
-
-            ((Node)(event.getSource())).getScene().getWindow().hide();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        changeScene("controllers/NotesView.fxml", notesButton);
     }
 
     @FXML
     public void goToToDoLists(ActionEvent event) {
         System.out.println("ToDoLists button clicked.");
-        Parent root;
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("controllers/ToDoListsView.fxml"));
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Notepad planer");
-            stage.setMinWidth(720);
-            stage.setMinHeight(360);
-            stage.setScene(new Scene(root, 1440, 720));
-            stage.show();
-
-            ((Node)(event.getSource())).getScene().getWindow().hide();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        changeScene("controllers/ToDoListsView.fxml", toDoListsButton);
     }
 
     public static void main(String[] args) {
