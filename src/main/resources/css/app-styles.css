@@ -26,5 +26,11 @@
 
 .button {
     -fx-border-color: #000000; /* #2b2200 #2b1100 */
+    -fx-border-width: 2px;
     /*-fx-border-radius: 16px;*/
+}
+
+.content-flex-box {
+    -fx-vgap: 16px;
+    -fx-hgap: 16px;
 }

@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.Button?>
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       VBox.vgrow="ALWAYS"
@@ -18,11 +19,22 @@
             </padding>
             <Text text="To-do lists" textAlignment="CENTER" styleClass="fw-bold, fs-24" />
         </HBox>
-        <VBox>
+        <FlowPane alignment="TOP_CENTER" style="-fx-background-color: red" styleClass="content-flex-box">
             <padding>
                 <Insets top="4.0" bottom="20.0" left="20.0" right="20.0" />
             </padding>
             <Text text="Here go to-do lists..." />
-        </VBox>
+            <Text text="Here go to-do lists..." />
+            <Text text="Here go to-do lists..." />
+            <Text text="Here go to-do lists..." />
+            <Text text="Here go to-do lists..." />
+            <Text text="Here go to-do lists..." />
+        </FlowPane>
+        <HBox alignment="CENTER" styleClass="bg-beige" style="-fx-background-color: blue">
+            <padding>
+                <Insets top="8.0" bottom="8.0" />
+            </padding>
+            <Button text="New to-do list" textAlignment="CENTER" styleClass="button, bg-orange" />
+        </HBox>
     </VBox>
 </HBox>
