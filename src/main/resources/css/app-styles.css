@@ -1,0 +1,30 @@
+/* Backgrounds */
+.bg-beige { -fx-background-color: #FFF6D6; }
+.bg-orange { -fx-background-color: #FFD94F; /* #ff9c59 */ }
+
+/* Font styles */
+.fs-16 { -fx-font-size: 16px;}
+.fs-20 {-fx-font-size: 20px;}
+.fs-24 {-fx-font-size: 24px;}
+.fs-30 {-fx-font-size: 30px;}
+.fs-40 {-fx-font-size: 40px;}
+
+/* Font styles */
+.fw-bold {-fx-font-weight: bold;}
+
+/* Sizing styles */
+.mw-240 {-fx-max-width: 240px;}
+
+
+/* Links and buttons styles */
+
+.link {
+    -fx-border-color: transparent;
+    -fx-underline: false;
+    -fx-text-fill: #000000; /* #2b2200 #2b1100 */
+}
+
+.button {
+    -fx-border-color: #000000; /* #2b2200 #2b1100 */
+    /*-fx-border-radius: 16px;*/
+}

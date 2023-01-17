@@ -5,20 +5,22 @@
 <?import javafx.scene.text.Text?>
 
 <HBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            VBox.vgrow="ALWAYS" style="-fx-background-color: yellow"
-            fx:controller="notepadplaner.controllers.ToDoListsController">
+      xmlns:fx="http://javafx.com/fxml"
+      VBox.vgrow="ALWAYS"
+      fx:controller="notepadplaner.controllers.ToDoListsController"
+      stylesheets="@../../css/app-styles.css"
+      styleClass="bg-beige">
     <fx:include fx:id="navBar" source="../components/NavBar.fxml"/>
     <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
-        <HBox prefHeight="120" alignment="CENTER" style="-fx-background-color: white">
+        <HBox prefHeight="120" alignment="CENTER" styleClass="bg-beige">
             <padding>
                 <Insets top="20.0" bottom="20.0" />
             </padding>
-            <Text text="To-do lists" textAlignment="CENTER" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <Text text="To-do lists" textAlignment="CENTER" styleClass="fw-bold, fs-24" />
         </HBox>
         <VBox>
             <padding>
-                <Insets top="20.0" bottom="20.0" left="20.0" right="20.0" />
+                <Insets top="4.0" bottom="20.0" left="20.0" right="20.0" />
             </padding>
             <Text text="Here go to-do lists..." />
         </VBox>
