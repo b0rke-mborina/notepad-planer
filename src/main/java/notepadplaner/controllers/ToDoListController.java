@@ -4,7 +4,7 @@ import javafx.scene.control.TextField;
 import notepadplaner.models.TodoList;
 import notepadplaner.models.TodoListItem;
 
-public class ToDoListController {
+public class ToDoListController extends BaseController {
     public TextField titleField;
     public TextField[] itemsFieldList;
 

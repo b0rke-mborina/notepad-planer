@@ -5,7 +5,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import notepadplaner.components.NavBar;
 
-public class ToDoListsController {
+public class ToDoListsController extends BaseController {
     @FXML
     private AnchorPane navBar;
     @FXML
