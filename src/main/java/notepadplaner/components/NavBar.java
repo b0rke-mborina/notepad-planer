@@ -29,8 +29,4 @@ public class NavBar {
         System.out.println("Back button clicked.");
         notepadPlaner.changeScene("/notepadplaner/NotepadPlanerView.fxml", backButton);
     }
-
-    public void foo(String foo) {
-        System.out.println(foo);
-    }
 }

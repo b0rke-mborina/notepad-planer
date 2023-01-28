@@ -12,4 +12,8 @@ public class NoteController {
         titleField.setText(note.title);
         noteField.setText(note.note);
     }
+
+    public void initialize() {
+        System.out.println("Note scene");
+    }
 }

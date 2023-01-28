@@ -12,4 +12,8 @@ public class ToDoListController {
         titleField.setText(todoList.title);
         // itemsFieldList
     }
+
+    public void initialize() {
+        System.out.println("TodoList scene");
+    }
 }
