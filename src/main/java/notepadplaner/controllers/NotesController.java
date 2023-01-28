@@ -27,9 +27,7 @@ public class NotesController extends BaseController {
     }
 
     public void showNote(MouseEvent mouseEvent) {
-        Node currentNode = (Node) mouseEvent.getSource();
-        currentNode.getScene().setUserData(currentNode.getUserData());
-
+        setSceneUserDataFromNode((Node) mouseEvent.getSource());
         changeScene("controllers/NoteView.fxml", mouseEvent);
     }
 }

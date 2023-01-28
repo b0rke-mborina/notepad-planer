@@ -25,4 +25,8 @@ public class BaseController {
             e.printStackTrace();
         }
     }
+
+    protected void setSceneUserDataFromNode(Node node) {
+        node.getScene().setUserData(node.getUserData());
+    }
 }
