@@ -145,6 +145,57 @@ public class TodoList extends Model {
         saveToFile(fileName, data.toArray(new String[0]), true);
     }
 
+    public static void addItem(int index, TodoListItem todoListItem) {
+        ArrayList<String> data = loadFile(fileName);
+        int counter = 0;
+        int dataIndex = 0;
+        for (String row : data) {
+            if (row.charAt(0) == '-') {
+                counter++;
+            }
+
+            if (counter > index) {
+                break;
+            }
+
+            dataIndex++;
+        }
+
+        dataIndex++;
+
+        while (data.size() > dataIndex && data.get(dataIndex).charAt(0) != '-') {
+            dataIndex++;
+        }
+
+        System.out.println(todoListItem.toString());
+        data.add(dataIndex, todoListItem.toString());
+
+        saveToFile(fileName, data.toArray(new String[0]), true);
+    }
+
+    public static void removeItem(int listIndex, int itemIndex) {
+        ArrayList<String> data = loadFile(fileName);
+        int counter = 0;
+        int dataIndex = 0;
+        for (String row : data) {
+            if (row.charAt(0) == '-') {
+                counter++;
+            }
+
+            if (counter > listIndex) {
+                break;
+            }
+
+            dataIndex++;
+        }
+
+        dataIndex++;
+
+        data.remove(dataIndex + itemIndex);
+
+        saveToFile(fileName, data.toArray(new String[0]), true);
+    }
+
     public void print() {
         System.out.println("[TODO List] Title: " + title);
 

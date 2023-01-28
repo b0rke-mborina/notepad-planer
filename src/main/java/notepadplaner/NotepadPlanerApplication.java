@@ -84,6 +84,7 @@ public class NotepadPlanerApplication extends Application {
     }
 
     public static void main(String[] args) {
+        crudExampleTodoListItem();
         launch();
     }
 
@@ -144,16 +145,14 @@ public class NotepadPlanerApplication extends Application {
     }
 
     private static void crudExampleTodoListItem() {
-        // Add item on List
-        // ...
-
-        // Edit item on List
-        // ...
-
         // Remove item from list
-        // ...
+        TodoList.removeItem(1, 0);
+        TodoList.removeItem(2, 3);
 
-        // Todo: Create crud operation on TodoListItems
+        // Add empty item on List
+        TodoList.addItem(1, new TodoListItem("Abcd", false));
+        TodoList.addItem(2, new TodoListItem("Abcdee", true));
+
         // Todo: Error handling + custom exceptions
     }
 }

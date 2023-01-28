@@ -15,7 +15,7 @@ public class TodoListItem extends Model {
     }
 
     public String toString() {
-        return checked ? "1" : "0" + text;
+        return (checked ? "1" : "0") + text;
     }
 
     public void print() {
