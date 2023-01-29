@@ -28,7 +28,7 @@
             <padding>
                 <Insets top="16.0" bottom="16.0" />
             </padding>
-            <Button text="New note" onAction="#addNewNote"
+            <Button text="+" onAction="#addNewNote"
                     textAlignment="CENTER" styleClass="button, bg-orange, fs-16" />
         </HBox>
     </VBox>
