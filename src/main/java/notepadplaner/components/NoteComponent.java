@@ -2,13 +2,14 @@ package notepadplaner.components;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import notepadplaner.controllers.NoteComponentController;
 import notepadplaner.models.Note;
 
 import java.io.IOException;
 
-public class NoteComponent extends VBox {
+public class NoteComponent extends AnchorPane {
     private Node view;
     private NoteComponentController controller;
 

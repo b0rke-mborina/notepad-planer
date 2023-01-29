@@ -19,22 +19,17 @@
             </padding>
             <Text text="To-do lists" textAlignment="CENTER" styleClass="fw-bold, fs-24" />
         </HBox>
-        <FlowPane fx:id="contentBox" alignment="TOP_CENTER" style="-fx-background-color: red" styleClass="content-flex-box">
+        <VBox fx:id="contentBox" alignment="TOP_CENTER" spacing="16" styleClass="content-flex-box">
             <padding>
-                <Insets top="4.0" bottom="20.0" left="20.0" right="20.0" />
+                <Insets left="20.0" right="20.0" />
             </padding>
-            <!-- <Text text="Here go to-do lists..." />
-            <Text text="Here go to-do lists..." />
-            <Text text="Here go to-do lists..." />
-            <Text text="Here go to-do lists..." />
-            <Text text="Here go to-do lists..." />
-            <Text text="Here go to-do lists..." /> -->
-        </FlowPane>
+        </VBox>
         <HBox alignment="CENTER" styleClass="bg-beige">
             <padding>
-                <Insets top="8.0" bottom="8.0" />
+                <Insets top="16.0" bottom="16.0" />
             </padding>
-            <Button text="New to-do list" onAction="#addNewToDoList" textAlignment="CENTER" styleClass="button, bg-orange" />
+            <Button text="New to-do list" onAction="#addNewToDoList"
+                    textAlignment="CENTER" styleClass="button, bg-orange, fs-16" />
         </HBox>
     </VBox>
 </HBox>

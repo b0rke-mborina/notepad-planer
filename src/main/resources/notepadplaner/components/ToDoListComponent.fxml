@@ -11,28 +11,29 @@
 <GridPane xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="notepadplaner.controllers.ToDoListComponentController"
-      prefHeight="100.0">
+      prefHeight="60.0" hgap="16" GridPane.hgrow="ALWAYS" styleClass="component-border, bg-beige">
     <columnConstraints>
-        <ColumnConstraints percentWidth="34" />
-        <ColumnConstraints percentWidth="34" />
-        <ColumnConstraints percentWidth="32" />
+        <ColumnConstraints percentWidth="35" />
+        <ColumnConstraints percentWidth="35" />
+        <ColumnConstraints percentWidth="30" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints percentHeight="100" />
     </rowConstraints>
-    <padding>
-        <Insets top="20" bottom="20" left="20" right="20" />
-    </padding>
-    <VBox spacing="40" style="-fx-background-color: green" alignment="CENTER"
+    <VBox spacing="40" styleClass="bg-orange" alignment="CENTER" GridPane.hgrow="always" GridPane.vgrow="always"
           GridPane.rowIndex="0" GridPane.columnIndex="0">
-        <Text fx:id="titleText" />
+        <Text fx:id="titleText" styleClass="fs-16, fw-bold" />
     </VBox>
-    <VBox style="-fx-background-color: green"
+    <VBox alignment="CENTER" GridPane.hgrow="always"  GridPane.vgrow="always"
           GridPane.rowIndex="0" GridPane.columnIndex="1">
-        <Text fx:id="toDoListText" />
+        <Text fx:id="toDoListPercentage" styleClass="fs-16" />
     </VBox>
-    <VBox style="-fx-background-color: green" alignment="CENTER"
+    <VBox styleClass="bg-beige" alignment="CENTER" GridPane.hgrow="always" GridPane.vgrow="always"
           GridPane.rowIndex="0" GridPane.columnIndex="2">
-        <Button fx:id="showButton" text="Show to-do list" onMouseClicked="#showToDoList" />
+        <padding>
+            <Insets right="20" />
+        </padding>
+        <Button fx:id="showButton" text="Show to-do list" onMouseClicked="#showToDoList"
+                styleClass="button, bg-orange" />
     </VBox>
 </GridPane>

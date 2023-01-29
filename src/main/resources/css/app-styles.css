@@ -40,3 +40,13 @@
     -fx-border-style: solid;
     -fx-border-color: #000000;
 }
+
+.text-field-area .content {
+    -fx-background-color: #FFD94F;
+}
+
+.component-border {
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: #000000;
+}

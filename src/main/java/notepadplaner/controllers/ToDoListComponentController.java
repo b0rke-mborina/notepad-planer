@@ -16,7 +16,7 @@ public class ToDoListComponentController extends BaseController implements Initi
     @FXML
     public Text titleText;
     @FXML
-    public Text toDoListText;
+    public Text toDoListPercentage;
     @FXML
     public Button showButton;
 
