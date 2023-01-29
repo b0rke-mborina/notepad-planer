@@ -39,12 +39,12 @@ public class ToDoListController extends BaseController {
     }
 
     public void cancelToDoList(ActionEvent actionEvent) {
-        System.out.println("Cancel toDoList button clicked.");
+        // System.out.println("Cancel toDoList button clicked.");
         goBack(actionEvent);
     }
 
     public void deleteToDoList(ActionEvent actionEvent) {
-        System.out.println("TodoList " + index + " deleted.");
+        // System.out.println("TodoList " + index + " deleted.");
         TodoList.delete(index);
         goBack(actionEvent);
     }
