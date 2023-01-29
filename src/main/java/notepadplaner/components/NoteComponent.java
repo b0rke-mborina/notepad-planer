@@ -3,10 +3,8 @@ package notepadplaner.components;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import notepadplaner.controllers.NoteComponentController;
 import notepadplaner.models.Note;
-
 import java.io.IOException;
 
 public class NoteComponent extends AnchorPane {
@@ -15,7 +13,7 @@ public class NoteComponent extends AnchorPane {
 
     public NoteComponent(Note note, int userData) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoteComponent.fxml"));
-        fxmlLoader.setControllerFactory(param -> controller = new NoteComponentController()); // note
+        fxmlLoader.setControllerFactory(param -> controller = new NoteComponentController());
         try {
             view = (Node) fxmlLoader.load();
         } catch (IOException ex) {

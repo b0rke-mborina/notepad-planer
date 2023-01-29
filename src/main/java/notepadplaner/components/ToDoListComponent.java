@@ -2,18 +2,11 @@ package notepadplaner.components;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import notepadplaner.controllers.ToDoListComponentController;
 import notepadplaner.models.TodoList;
-import notepadplaner.models.TodoListItem;
-
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
 
 public class ToDoListComponent extends GridPane {
     private Node view;

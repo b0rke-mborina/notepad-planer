@@ -73,13 +73,11 @@ public class NotepadPlanerApplication extends Application {
 
     @FXML
     public void goToNotes(ActionEvent event) {
-        // System.out.println("Notes button clicked.");
         changeScene("controllers/NotesView.fxml", notesButton);
     }
 
     @FXML
     public void goToToDoLists(ActionEvent event) {
-        // System.out.println("ToDoLists button clicked.");
         changeScene("controllers/ToDoListsView.fxml", toDoListsButton);
     }
 

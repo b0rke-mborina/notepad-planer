@@ -7,9 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import notepadplaner.models.Note;
 import notepadplaner.models.TodoList;
-import notepadplaner.models.TodoListItem;
 
 public class ToDoListController extends BaseController {
     public TextField titleField;
@@ -39,12 +37,10 @@ public class ToDoListController extends BaseController {
     }
 
     public void cancelToDoList(ActionEvent actionEvent) {
-        // System.out.println("Cancel toDoList button clicked.");
         goBack(actionEvent);
     }
 
     public void deleteToDoList(ActionEvent actionEvent) {
-        // System.out.println("TodoList " + index + " deleted.");
         TodoList.delete(index);
         goBack(actionEvent);
     }

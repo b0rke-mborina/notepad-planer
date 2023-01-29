@@ -6,8 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import notepadplaner.models.Note;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,15 +17,8 @@ public class NoteComponentController extends BaseController implements Initializ
     @FXML
     public Button showButton;
 
-    /*public NoteComponentController(Note note) {
-
-        // titleText.setText(note.title);
-        // noteText.setText(note.note);
-    }*/
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // System.out.println("Note component initialized.");
         System.out.println(showButton.getUserData());
     }
 

@@ -9,9 +9,7 @@ import javafx.scene.layout.FlowPane;
 import notepadplaner.components.NavBar;
 import notepadplaner.components.NoteComponent;
 import notepadplaner.models.Note;
-
 import java.util.ArrayList;
-
 
 public class NotesController extends BaseController {
     @FXML
@@ -22,7 +20,6 @@ public class NotesController extends BaseController {
     private FlowPane contentBox;
 
     public void initialize() {
-        // System.out.println("Notes controller initialized.");
         ArrayList<Note> notes = Note.getAll();
         System.out.println(notes);
         for (Note note : notes) {

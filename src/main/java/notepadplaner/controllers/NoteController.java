@@ -33,7 +33,6 @@ public class NoteController extends BaseController {
     }
 
     public void saveNote(ActionEvent actionEvent) {
-        // System.out.println("Note " + index + " saved.");
         Note.edit(index, new Note(
             titleField.getText(),
             noteField.getText()
@@ -42,12 +41,10 @@ public class NoteController extends BaseController {
     }
 
     public void cancelNote(ActionEvent actionEvent) {
-        // System.out.println("Cancel note button clicked.");
         goBack(actionEvent);
     }
 
     public void deleteNote(ActionEvent actionEvent) {
-        // System.out.println("Note " + index + " deleted.");
         Note.delete(this.index);
         goBack(actionEvent);
     }

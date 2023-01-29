@@ -16,17 +16,14 @@ public class NavBar {
     private NotepadPlanerApplication notepadPlaner = NotepadPlanerApplication.getApplicationInstance();
 
     public void goToNotes(ActionEvent event) {
-        System.out.println("Notes link clicked.");
         notepadPlaner.changeScene("/notepadplaner/controllers/NotesView.fxml", notesNavLink);
     }
 
     public void goToToDoLists(ActionEvent event) {
-        System.out.println("ToDoLists link clicked.");
         notepadPlaner.changeScene("/notepadplaner/controllers/ToDoListsView.fxml", toDoListsNavLink);
     }
 
     public void returnToMainMenu(ActionEvent event) {
-        System.out.println("Back button clicked.");
         notepadPlaner.changeScene("/notepadplaner/NotepadPlanerView.fxml", backButton);
     }
 }

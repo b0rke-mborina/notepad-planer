@@ -6,11 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import notepadplaner.models.Note;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 public class ToDoListComponentController extends BaseController implements Initializable {
     @FXML
