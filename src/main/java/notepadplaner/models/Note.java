@@ -22,9 +22,7 @@ public class Note extends Model {
         ArrayList<String> data = loadFile(fileName);
 
         Note note = new Note(data.get(2 * index), data.get(2 * index + 1));
-        note.print();
         decodeNewline(note);
-        note.print();
         return note;
     }
 
@@ -51,9 +49,7 @@ public class Note extends Model {
     }
 
     public static void edit(int index, Note noteObj) {
-        noteObj.print();
         encodeNewline(noteObj);
-        noteObj.print();
         ArrayList<String> data = loadFile(fileName);
 
         data.set(index * 2, noteObj.title);
@@ -69,7 +65,6 @@ public class Note extends Model {
 
     private static void encodeNewline(Note note) {
         note.note = note.note.replaceAll("\n", "\\\\n").replaceAll("\r", "\\\\r");
-        note.print();
     }
 
     private static void decodeNewline(Note note) {
