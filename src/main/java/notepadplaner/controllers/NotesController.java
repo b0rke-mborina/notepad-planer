@@ -22,15 +22,11 @@ public class NotesController extends BaseController {
     private FlowPane contentBox;
 
     public void initialize() {
-        System.out.println("Notes controller initialized.");
+        // System.out.println("Notes controller initialized.");
         ArrayList<Note> notes = Note.getAll();
         System.out.println(notes);
         for (Note note : notes) {
-            System.out.println("Title: " + note.title);
-            System.out.println("Body: " + note.note);
-            System.out.println("Index: " + notes.indexOf(note));
             NoteComponent noteComponent = new NoteComponent(note, notes.indexOf(note) + 1);
-            System.out.println(contentBox.getChildren());
             contentBox.getChildren().add(noteComponent);
         }
     }

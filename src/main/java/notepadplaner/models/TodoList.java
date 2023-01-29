@@ -41,7 +41,6 @@ public class TodoList extends Model {
 
         int dataIndex = 0;
 
-        System.out.println(data.size());
         while (data.size() > dataIndex) {
             String row = data.get(dataIndex);
             if (data.get(dataIndex).charAt(0) == '-') {
@@ -110,7 +109,7 @@ public class TodoList extends Model {
 
         data.remove(dataIndex);
 
-        while (data.size() > dataIndex + 1 && data.get(dataIndex).charAt(0) != '-') {
+        while (data.size() > dataIndex && data.get(dataIndex).charAt(0) != '-') {
             data.remove(dataIndex);
         }
 
@@ -167,7 +166,6 @@ public class TodoList extends Model {
             dataIndex++;
         }
 
-        System.out.println(todoListItem.toString());
         data.add(dataIndex, todoListItem.toString());
 
         saveToFile(fileName, data.toArray(new String[0]), true);

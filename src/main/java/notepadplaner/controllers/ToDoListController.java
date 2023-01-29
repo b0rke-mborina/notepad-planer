@@ -2,6 +2,7 @@ package notepadplaner.controllers;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -14,6 +15,7 @@ public class ToDoListController extends BaseController {
     public TextField titleField;
     public TextField[] itemsFieldList;
     public HBox root;
+    private int index;
 
     public void initialize() {
         Platform.runLater(() -> {
@@ -24,7 +26,8 @@ public class ToDoListController extends BaseController {
     }
 
     private void loadToDoList(int index) {
-        TodoList todoList = TodoList.get(index);
+        this.index = index - 1;
+        TodoList todoList = TodoList.get(index - 1);
 
         titleField.setText(todoList.title);
         // itemsFieldList.setText(note.note);
@@ -32,13 +35,21 @@ public class ToDoListController extends BaseController {
 
     public void saveToDoList(ActionEvent actionEvent) {
         System.out.println("Save toDoList button clicked.");
+        goBack(actionEvent);
     }
 
     public void cancelToDoList(ActionEvent actionEvent) {
         System.out.println("Cancel toDoList button clicked.");
+        goBack(actionEvent);
     }
 
     public void deleteToDoList(ActionEvent actionEvent) {
-        System.out.println("Delete toDoList button clicked.");
+        System.out.println("TodoList " + index + " deleted.");
+        TodoList.delete(index);
+        goBack(actionEvent);
+    }
+
+    private void goBack(Event event) {
+        changeScene("controllers/ToDoListsView.fxml", event);
     }
 }

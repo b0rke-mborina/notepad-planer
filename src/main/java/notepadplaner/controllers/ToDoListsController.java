@@ -21,15 +21,15 @@ public class ToDoListsController extends BaseController {
     private FlowPane contentBox;
 
     public void initialize() {
-        System.out.println("ToDoLists controller initialized.");
+        // System.out.println("ToDoLists controller initialized.");
         ArrayList<TodoList> todoLists = TodoList.getAll();
-        System.out.println(todoLists);
+        // System.out.println(todoLists);
         for (TodoList todoList : todoLists) {
-            System.out.println("Title: " + todoList.title);
-            System.out.println("Body: " + Arrays.toString(todoList.items));
-            System.out.println("Index: " + todoLists.indexOf(todoList));
+            // System.out.println("Title: " + todoList.title);
+            // System.out.println("Body: " + Arrays.toString(todoList.items));
+            // System.out.println("Index: " + todoLists.indexOf(todoList));
             ToDoListComponent toDoListComponent = new ToDoListComponent(todoList, todoLists.indexOf(todoList) + 1);
-            System.out.println(contentBox.getChildren());
+            // System.out.println(contentBox.getChildren());
             contentBox.getChildren().add(toDoListComponent);
         }
     }

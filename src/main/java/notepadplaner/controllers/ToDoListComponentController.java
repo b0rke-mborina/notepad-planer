@@ -22,8 +22,8 @@ public class ToDoListComponentController extends BaseController implements Initi
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("ToDoList component initialized.");
-        System.out.println(showButton.getUserData());
+        // System.out.println("ToDoList component initialized.");
+        // System.out.println(showButton.getUserData());
     }
 
     public void showToDoList(MouseEvent mouseEvent) {

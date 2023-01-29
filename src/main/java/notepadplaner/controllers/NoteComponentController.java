@@ -27,7 +27,7 @@ public class NoteComponentController extends BaseController implements Initializ
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Note component initialized.");
+        // System.out.println("Note component initialized.");
         System.out.println(showButton.getUserData());
     }
 
