@@ -20,7 +20,7 @@ public class Note extends Model {
     public static Note get(int index) {
         ArrayList<String> data = loadFile(fileName);
 
-        return new Note(data.get(index), data.get(index + 1));
+        return new Note(data.get(2 * index), data.get(2 * index + 1));
     }
 
     public static ArrayList<Note> getAll() {

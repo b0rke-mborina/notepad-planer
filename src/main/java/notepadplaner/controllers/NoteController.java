@@ -23,7 +23,7 @@ public class NoteController extends BaseController {
     }
 
     private void loadNote(int index) {
-        Note note = Note.get(index);
+        Note note = Note.get(index - 1);
 
         titleField.setText(note.title);
         noteField.setText(note.note);
