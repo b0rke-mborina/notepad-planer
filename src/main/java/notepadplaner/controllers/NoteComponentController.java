@@ -19,7 +19,7 @@ public class NoteComponentController extends BaseController implements Initializ
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(showButton.getUserData());
+        // System.out.println(showButton.getUserData());
     }
 
     public void showNote(MouseEvent mouseEvent) {

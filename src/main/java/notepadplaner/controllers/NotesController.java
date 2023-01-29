@@ -21,7 +21,7 @@ public class NotesController extends BaseController {
 
     public void initialize() {
         ArrayList<Note> notes = Note.getAll();
-        System.out.println(notes);
+        // System.out.println(notes);
         for (Note note : notes) {
             NoteComponent noteComponent = new NoteComponent(note, notes.indexOf(note) + 1);
             contentBox.getChildren().add(noteComponent);
@@ -29,9 +29,7 @@ public class NotesController extends BaseController {
     }
 
     public void addNewNote(ActionEvent event) {
-        System.out.println("Add new note button clicked.");
-        // setSceneUserDataFromNode((Node) event.getSource());
-        changeScene("controllers/NoteView.fxml", event);
+        changeScene("controllers/NewNoteView.fxml", event);
     }
 
     public void showNote(MouseEvent mouseEvent) {

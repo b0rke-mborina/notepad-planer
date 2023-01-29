@@ -5,12 +5,35 @@ import java.util.ArrayList;
 public class Note extends Model {
     public String title;
     public String note;
+    private String shortNote;
+    private String shortTitle;
 
     private static final String fileName = "notes.txt";
 
     public Note(String title, String note) {
         this.title = title;
         this.note = note;
+
+        shortTitle = title.length() > 16 ? title.substring(0, 18) + "..." : title;
+
+        shortNote = "";
+        String[] rows = this.note.split("\\\\n");
+        for (int i = 0; i < rows.length; i++ ) {
+            if (i > 2) {
+                shortNote += "...";
+                break;
+            }
+
+            shortNote += (rows[i].length() > 18 ? rows[i].substring(0, 20) + "...": rows[i]) + "\n";
+        }
+    }
+
+    public String getShortNote() {
+        return shortNote;
+    }
+
+    public String getShortTitle() {
+        return shortTitle;
     }
 
     public static void create(Note note) {

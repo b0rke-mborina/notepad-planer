@@ -15,13 +15,13 @@ public class NoteComponent extends AnchorPane {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoteComponent.fxml"));
         fxmlLoader.setControllerFactory(param -> controller = new NoteComponentController());
         try {
-            view = (Node) fxmlLoader.load();
+            view = fxmlLoader.load();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         getChildren().add(view);
-        controller.titleText.setText(note.title);
-        controller.noteText.setText(note.note);
+        controller.titleText.setText(note.getShortTitle());
+        controller.noteText.setText(note.getShortNote());
         controller.showButton.setUserData(userData);
     }
 }
