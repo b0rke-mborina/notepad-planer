@@ -34,3 +34,9 @@
     -fx-vgap: 16px;
     -fx-hgap: 16px;
 }
+
+.text-field-area {
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: #000000;
+}

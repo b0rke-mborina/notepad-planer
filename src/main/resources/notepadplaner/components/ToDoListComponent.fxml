@@ -6,9 +6,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="notepadplaner.components.ToDoListComponent"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<GridPane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="notepadplaner.controllers.ToDoListComponentController"
+      prefHeight="100.0">
+    <columnConstraints>
+        <ColumnConstraints percentWidth="34" />
+        <ColumnConstraints percentWidth="34" />
+        <ColumnConstraints percentWidth="32" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints percentHeight="100" />
+    </rowConstraints>
+    <padding>
+        <Insets top="20" bottom="20" left="20" right="20" />
+    </padding>
+    <VBox spacing="40" style="-fx-background-color: green" alignment="CENTER"
+          GridPane.rowIndex="0" GridPane.columnIndex="0">
+        <Text fx:id="titleText" />
+    </VBox>
+    <VBox style="-fx-background-color: green"
+          GridPane.rowIndex="0" GridPane.columnIndex="1">
+        <Text fx:id="toDoListText" />
+    </VBox>
+    <VBox style="-fx-background-color: green" alignment="CENTER"
+          GridPane.rowIndex="0" GridPane.columnIndex="2">
+        <Button fx:id="showButton" text="Show to-do list" onMouseClicked="#showToDoList" />
+    </VBox>
+</GridPane>

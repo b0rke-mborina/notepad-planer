@@ -6,9 +6,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="notepadplaner.components.NoteComponent"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+            fx:controller="notepadplaner.controllers.NoteComponentController"
+            prefHeight="250.0" prefWidth="180.0" spacing="40"
+            style="-fx-background-color: blue">
+    <padding>
+        <Insets top="20" bottom="20" left="20" right="20" />
+    </padding>
+    <HBox spacing="40" style="-fx-background-color: green" alignment="CENTER">
+        <Text fx:id="titleText" />
+    </HBox>
+    <HBox style="-fx-background-color: green">
+        <Text fx:id="noteText" />
+    </HBox>
+    <HBox style="-fx-background-color: green" alignment="CENTER">
+        <Button fx:id="showButton" text="Show note" onMouseClicked="#showNote" />
+    </HBox>
+</VBox>

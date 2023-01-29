@@ -4,6 +4,9 @@
 
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <HBox xmlns="http://javafx.com/javafx"
       fx:id="root"
       xmlns:fx="http://javafx.com/fxml"
@@ -12,9 +15,27 @@
       stylesheets="@../../css/app-styles.css"
       styleClass="bg-beige">
     <fx:include fx:id="navBar" source="../components/NavBar.fxml"/>
-
     <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
-        <TextField fx:id="titleField" />
-        <TextArea fx:id="noteField" />
+        <HBox prefHeight="120" alignment="CENTER" styleClass="bg-beige">
+            <padding>
+                <Insets top="20.0" bottom="20.0" />
+            </padding>
+            <Text text="Note" textAlignment="CENTER" styleClass="fw-bold, fs-24" />
+        </HBox>
+        <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS" spacing="40">
+            <padding>
+                <Insets top="20.0" bottom="20.0" left="40" right="40" />
+            </padding>
+            <TextField fx:id="titleField" styleClass="fs-20, bg-beige, text-field-area" />
+            <TextArea fx:id="noteField" styleClass="fs-16, bg-beige, text-field-area" />
+        </VBox>
+        <HBox alignment="CENTER" spacing="20">
+            <padding>
+                <Insets top="20.0" bottom="20.0" left="40" right="40" />
+            </padding>
+            <Button text="Save" onAction="#saveNote" styleClass="button, bg-orange" />
+            <Button text="Cancel" onAction="#cancelNote" styleClass="button, bg-orange" />
+            <Button text="Delete" onAction="#deleteNote" styleClass="button, bg-orange" />
+        </HBox>
     </VBox>
 </HBox>

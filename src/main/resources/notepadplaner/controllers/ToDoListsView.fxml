@@ -23,12 +23,12 @@
             <padding>
                 <Insets top="4.0" bottom="20.0" left="20.0" right="20.0" />
             </padding>
+            <!-- <Text text="Here go to-do lists..." />
             <Text text="Here go to-do lists..." />
             <Text text="Here go to-do lists..." />
             <Text text="Here go to-do lists..." />
             <Text text="Here go to-do lists..." />
-            <Text text="Here go to-do lists..." />
-            <Text text="Here go to-do lists..." />
+            <Text text="Here go to-do lists..." /> -->
         </FlowPane>
         <HBox alignment="CENTER" styleClass="bg-beige">
             <padding>

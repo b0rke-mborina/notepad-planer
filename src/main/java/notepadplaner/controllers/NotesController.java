@@ -7,6 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import notepadplaner.components.NavBar;
+import notepadplaner.components.NoteComponent;
+import notepadplaner.models.Note;
+
+import java.util.ArrayList;
 
 
 public class NotesController extends BaseController {
@@ -19,10 +23,21 @@ public class NotesController extends BaseController {
 
     public void initialize() {
         System.out.println("Notes controller initialized.");
+        ArrayList<Note> notes = Note.getAll();
+        System.out.println(notes);
+        for (Note note : notes) {
+            System.out.println("Title: " + note.title);
+            System.out.println("Body: " + note.note);
+            System.out.println("Index: " + notes.indexOf(note));
+            NoteComponent noteComponent = new NoteComponent(note, notes.indexOf(note) + 1);
+            System.out.println(contentBox.getChildren());
+            contentBox.getChildren().add(noteComponent);
+        }
     }
 
     public void addNewNote(ActionEvent event) {
         System.out.println("Add new note button clicked.");
+        // setSceneUserDataFromNode((Node) event.getSource());
         changeScene("controllers/NoteView.fxml", event);
     }
 

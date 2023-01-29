@@ -1,15 +1,28 @@
 package notepadplaner.components;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import notepadplaner.controllers.NoteComponentController;
 import notepadplaner.models.Note;
 
-public class NoteComponent extends VBox {
-    public Text titleText;
-    public Text noteText;
+import java.io.IOException;
 
-    public NoteComponent(Note note) {
-        titleText.setText(note.title);
-        noteText.setText(note.note);
+public class NoteComponent extends VBox {
+    private Node view;
+    private NoteComponentController controller;
+
+    public NoteComponent(Note note, int userData) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("NoteComponent.fxml"));
+        fxmlLoader.setControllerFactory(param -> controller = new NoteComponentController()); // note
+        try {
+            view = (Node) fxmlLoader.load();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        getChildren().add(view);
+        controller.titleText.setText(note.title);
+        controller.noteText.setText(note.note);
+        controller.showButton.setUserData(userData);
     }
 }

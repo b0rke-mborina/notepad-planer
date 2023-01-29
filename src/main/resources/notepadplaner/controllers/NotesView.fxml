@@ -23,21 +23,16 @@
             <padding>
                 <Insets top="4.0" bottom="20.0" left="20.0" right="20.0" />
             </padding>
-            <Text text="Here go notes..." />
-            <Text text="Here go notes..." />
-            <Text text="Here go notes..." />
-            <Text text="Here go notes..." />
-            <Text text="Here go notes..." />
-            <Text text="Here go notes..." />
+            <!-- <Button text="View note1" onMouseClicked="#showNote" textAlignment="CENTER" styleClass="button, bg-orange" userData="1" />
+            <Button text="View note2" onMouseClicked="#showNote" textAlignment="CENTER" styleClass="button, bg-orange" userData="2" />
+            <Button text="View note3" onMouseClicked="#showNote" textAlignment="CENTER" styleClass="button, bg-orange" userData="3" />
+            <Button text="View note4" onMouseClicked="#showNote" textAlignment="CENTER" styleClass="button, bg-orange" userData="4" /> -->
         </FlowPane>
         <HBox alignment="CENTER" styleClass="bg-beige">
             <padding>
                 <Insets top="8.0" bottom="8.0" />
             </padding>
-            <Button text="View note1" onMouseClicked="#showNote" textAlignment="CENTER" styleClass="button, bg-orange" userData="1" />
-            <Button text="View note2" onMouseClicked="#showNote" textAlignment="CENTER" styleClass="button, bg-orange" userData="2" />
-            <Button text="View note3" onMouseClicked="#showNote" textAlignment="CENTER" styleClass="button, bg-orange" userData="3" />
-            <Button text="View note4" onMouseClicked="#showNote" textAlignment="CENTER" styleClass="button, bg-orange" userData="4" />
+            <Button text="New note" onAction="#addNewNote" textAlignment="CENTER" styleClass="button, bg-orange" />
         </HBox>
     </VBox>
 </HBox>
