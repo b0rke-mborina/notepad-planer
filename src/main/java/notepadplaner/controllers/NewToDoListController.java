@@ -15,27 +15,22 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import notepadplaner.models.TodoList;
 import notepadplaner.models.TodoListItem;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
-public class ToDoListController extends BaseController {
+public class NewToDoListController extends BaseController {
     public TextField titleField;
     public VBox itemsListBox;
     public HBox root;
     private int index;
 
     public void initialize() {
-        Platform.runLater(() -> {
-            Scene currentScene = root.getScene();
-            Stage currentStage = (Stage)currentScene.getWindow();
-            loadToDoList(Integer.parseInt(currentStage.getUserData().toString()));
-        });
+        loadToDoList();
     }
 
-    private void loadToDoList(int index) {
-        this.index = index - 1;
-        TodoList todoList = TodoList.get(index - 1);
+    private void loadToDoList() {
+        TodoList todoList = new TodoList("", new TodoListItem[]{new TodoListItem("", false)});
 
         titleField.setText(todoList.title);
         for (TodoListItem item : todoList.items) {
@@ -144,7 +139,7 @@ public class ToDoListController extends BaseController {
         }
     }
 
-    public void saveToDoList(ActionEvent actionEvent) {
+    public void createToDoList(ActionEvent actionEvent) {
         TodoListItem[] items = new TodoListItem[]{};
         List<Node> itemsBoxes = itemsListBox.getChildren();
         for (Node itemBox : itemsBoxes) {
@@ -159,11 +154,6 @@ public class ToDoListController extends BaseController {
     }
 
     public void cancelToDoList(ActionEvent actionEvent) {
-        goBack(actionEvent);
-    }
-
-    public void deleteToDoList(ActionEvent actionEvent) {
-        TodoList.delete(index);
         goBack(actionEvent);
     }
 

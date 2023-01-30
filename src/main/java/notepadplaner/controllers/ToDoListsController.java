@@ -1,5 +1,6 @@
 package notepadplaner.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -24,7 +25,7 @@ public class ToDoListsController extends BaseController {
         }
     }
 
-    public void addNewToDoList() {
-        System.out.println("Add new to-do list button clicked.");
+    public void addNewToDoList(ActionEvent event) {
+        changeScene("controllers/NewToDoListView.fxml", event);
     }
 }

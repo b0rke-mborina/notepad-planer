@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+
+<HBox xmlns="http://javafx.com/javafx"
+      fx:id="root"
+      xmlns:fx="http://javafx.com/fxml"
+      VBox.vgrow="ALWAYS"
+      fx:controller="notepadplaner.controllers.NewToDoListController"
+      stylesheets="@../../css/app-styles.css"
+      styleClass="bg-beige">
+    <fx:include fx:id="navBar" source="../components/NavBar.fxml"/>
+    <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+        <HBox prefHeight="120" alignment="CENTER" styleClass="bg-beige">
+            <padding>
+                <Insets top="20.0" bottom="20.0" />
+            </padding>
+            <Text text="To-do list" textAlignment="CENTER" styleClass="fw-bold, fs-24" />
+        </HBox>
+        <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS" spacing="40">
+            <padding>
+                <Insets top="20.0" bottom="20.0" left="40" right="40" />
+            </padding>
+            <AnchorPane>
+                <TextField fx:id="titleField" styleClass="fs-20, bg-orange, text-field-area"
+                           AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
+            </AnchorPane>
+            <VBox fx:id="itemsListBox" spacing="16"><!-- <TextField /> --></VBox>
+            <Button text="+" onAction="#addItem" styleClass="button, bg-orange, fs-16" />
+        </VBox>
+        <HBox alignment="CENTER" spacing="20">
+            <padding>
+                <Insets top="20.0" bottom="20.0" left="40" right="40" />
+            </padding>
+            <Button text="Save" onAction="#createToDoList" styleClass="button, bg-orange, fs-16" />
+            <Button text="Cancel" onAction="#cancelToDoList" styleClass="button, bg-orange, fs-16" />
+        </HBox>
+    </VBox>
+</HBox>
