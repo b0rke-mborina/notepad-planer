@@ -147,6 +147,7 @@ public class ToDoListController extends BaseController {
     }
 
     public void saveToDoList(ActionEvent actionEvent) {
+        todoList.title = titleField.getText();
         List<Node> itemsBoxes = itemsListBox.getChildren();
         for (int i = 0; i < itemsBoxes.size(); i++) {
             TextField textField = (TextField) ((HBox) itemsBoxes.get(i)).getChildren().get(1);

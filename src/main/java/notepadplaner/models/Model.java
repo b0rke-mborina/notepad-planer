@@ -1,5 +1,6 @@
 package notepadplaner.models;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,6 +17,10 @@ public class Model {
     protected static void saveToFile(String fileName, String[] args, boolean override) {
         try {
             Path path = Paths.get(fileName);
+            File file = new File(fileName);
+            if (file.createNewFile()) System.out.println("First file created: " + fileName);
+            else System.out.println("First file already exists: " + file.getName());
+
             if (override) {
                 Files.write(path, "".getBytes());
             }
@@ -35,6 +40,10 @@ public class Model {
         Path path = Paths.get(fileName);
 
         try {
+            File file = new File(fileName);
+            if (file.createNewFile()) System.out.println("First file created: " + fileName);
+            else System.out.println("First file already exists: " + file.getName());
+
             lines = (ArrayList<String>) Files.readAllLines(path);
         } catch (IOException ignored) {
 
