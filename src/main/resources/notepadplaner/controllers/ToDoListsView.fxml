@@ -28,8 +28,8 @@
             <padding>
                 <Insets top="16.0" bottom="16.0" />
             </padding>
-            <Button text="New to-do list" onAction="#addNewToDoList"
-                    textAlignment="CENTER" styleClass="button, bg-orange, fs-16" />
+            <Button text="+" onAction="#addNewToDoList"
+                    textAlignment="CENTER" styleClass="button, bg-orange, fs-20" />
         </HBox>
     </VBox>
 </HBox>
