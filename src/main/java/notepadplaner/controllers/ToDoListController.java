@@ -3,6 +3,7 @@ package notepadplaner.controllers;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -23,6 +24,7 @@ public class ToDoListController extends BaseController {
     public TextField titleField;
     public VBox itemsListBox;
     public HBox root;
+    public TodoList todoList;
     private int index;
 
     public void initialize() {
@@ -35,7 +37,7 @@ public class ToDoListController extends BaseController {
 
     private void loadToDoList(int index) {
         this.index = index - 1;
-        TodoList todoList = TodoList.get(index - 1);
+        todoList = TodoList.get(index - 1);
 
         titleField.setText(todoList.title);
         for (TodoListItem item : todoList.items) {
@@ -75,9 +77,7 @@ public class ToDoListController extends BaseController {
         Button removeItemButton = new Button("Remove item");
         removeItemButton.getStyleClass().add("bg-orange");
         removeItemButton.setUserData(itemIndex);
-        removeItemButton.setOnMouseClicked(e ->
-                removeItem(((Button) e.getSource()).getUserData().toString())
-        );
+        removeItemButton.setOnAction(this::removeItem);
 
         // create box for elements
         HBox itemBox = new HBox();
@@ -96,6 +96,8 @@ public class ToDoListController extends BaseController {
     public void setItemCompleted(String source) {
         // change checked text
         int itemIndex = Integer.parseInt(source);
+        todoList.items[itemIndex].checked = true;
+
         Node hbox = itemsListBox.getChildren().get(itemIndex);
         Text checkedText = (Text) ((HBox)hbox).getChildren().get(0);
         checkedText.setText("✔");
@@ -110,6 +112,8 @@ public class ToDoListController extends BaseController {
 
     public void setItemNotCompleted(Object source) {
         int itemIndex = Integer.parseInt(source.toString());
+        todoList.items[itemIndex].checked = false;
+
         Node hbox = itemsListBox.getChildren().get(itemIndex);
         Text checkedText = (Text) ((HBox)hbox).getChildren().get(0);
         checkedText.setText("✖");
@@ -121,40 +125,35 @@ public class ToDoListController extends BaseController {
         );
     }
 
-    public void removeItem(Object source) {
-        int itemIndex = Integer.parseInt(source.toString());
-        List<Node> hBoxes = itemsListBox.getChildren();
-        int hBoxesSize = hBoxes.size();
-        if (hBoxesSize > 1) {
-            hBoxes.remove(itemIndex);
-            for (int i = 0; i < itemsListBox.getChildren().size(); i++) {
-                HBox box = (HBox) itemsListBox.getChildren().get(i);
-                box.setUserData(i);
-                Node button = box.getChildren().get(3);
-                button.setUserData(i);
-            }
-        }
+    private void removeItem(ActionEvent actionEvent) {
+        Node btnNode = (Node) actionEvent.getSource();
+        int itemIndex = Integer.parseInt(btnNode.getUserData().toString());
+
+        Scene currentScene = root.getScene();
+        Stage currentStage = (Stage)currentScene.getWindow();
+        setSceneUserDataFromNode(root, currentStage.getUserData());
+
+        TodoList.removeItem(index, itemIndex);
+        changeScene("controllers/ToDoListView.fxml", actionEvent);
     }
 
-    public void addItem() {
-        int boxSize = itemsListBox.getChildren().size();
-        TextField textField = (TextField) ((HBox) itemsListBox.getChildren().get(boxSize - 1)).getChildren().get(1);
-        if (!textField.getText().equals("")) {
-            loadElement(new TodoListItem("", false), boxSize);
-        }
+    public void addItem(ActionEvent actionEvent) {
+        Scene currentScene = root.getScene();
+        Stage currentStage = (Stage)currentScene.getWindow();
+        setSceneUserDataFromNode(root, currentStage.getUserData());
+
+        TodoList.addItem(index, new TodoListItem(""));
+        changeScene("controllers/ToDoListView.fxml", actionEvent);
     }
 
     public void saveToDoList(ActionEvent actionEvent) {
-        TodoListItem[] items = new TodoListItem[]{};
         List<Node> itemsBoxes = itemsListBox.getChildren();
-        for (Node itemBox : itemsBoxes) {
-            // items.app()
+        for (int i = 0; i < itemsBoxes.size(); i++) {
+            TextField textField = (TextField) ((HBox) itemsBoxes.get(i)).getChildren().get(1);
+            todoList.items[i].text = textField.getText();
         }
 
-        /*TodoList.edit(index, new TodoList(
-            titleField.getText(),
-            itemsListBox.getChildren()
-        ));*/
+        TodoList.edit(index, todoList);
         goBack(actionEvent);
     }
 

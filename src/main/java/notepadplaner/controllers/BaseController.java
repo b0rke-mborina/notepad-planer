@@ -27,4 +27,7 @@ public class BaseController {
     protected void setSceneUserDataFromNode(Node node) {
         node.getScene().setUserData(node.getUserData());
     }
+    protected void setSceneUserDataFromNode(Node node, Object data) {
+        node.getScene().setUserData(data);
+    }
 }

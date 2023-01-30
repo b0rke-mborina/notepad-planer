@@ -132,7 +132,7 @@ public class TodoList extends Model {
         dataIndex++;
         int startIndex = dataIndex;
 
-        while (data.size() > dataIndex + 1 && data.get(dataIndex).charAt(0) != '-') {
+        while (data.size() > dataIndex && data.get(dataIndex).charAt(0) != '-') {
             data.set(dataIndex, todoListObj.items[dataIndex - startIndex].toString());
             dataIndex++;
         }

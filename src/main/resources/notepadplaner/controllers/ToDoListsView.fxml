@@ -8,6 +8,7 @@
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       VBox.vgrow="ALWAYS"
+      fx:id="root"
       fx:controller="notepadplaner.controllers.ToDoListsController"
       stylesheets="@../../css/app-styles.css"
       styleClass="bg-beige">
