@@ -1,27 +1,34 @@
 package notepadplaner.controllers;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.scene.Scene;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import notepadplaner.models.Note;
 
+/**
+ * @author Mateo, Rafael
+ */
 public class NoteController extends BaseController {
-    public TextField titleField;
-    public TextArea noteField;
-    public HBox root;
+    @FXML
+    private HBox root;
+    @FXML
+    private TextField titleField;
+    @FXML
+    private TextArea noteField;
     private int index;
 
+    public Node getRoot() {
+        return root;
+    }
+
+    /**
+     * @author Mateo, Rafael
+     */
     public void initialize() {
-        Platform.runLater(() -> {
-            Scene currentScene = root.getScene();
-            Stage currentStage = (Stage)currentScene.getWindow();
-            loadNote(Integer.parseInt(currentStage.getUserData().toString()));
-        });
+        Platform.runLater(() -> loadNote(Integer.parseInt(getStageUserData().toString())));
     }
 
     private void loadNote(int index) {
@@ -32,24 +39,21 @@ public class NoteController extends BaseController {
         noteField.setText(note.note);
     }
 
-    public void saveNote(ActionEvent actionEvent) {
-        Note.edit(index, new Note(
-            titleField.getText(),
-            noteField.getText()
-        ));
-        goBack(actionEvent);
+    public void saveNote() {
+        Note.edit(index, new Note(titleField.getText(), noteField.getText()));
+        goBack();
     }
 
-    public void cancelNote(ActionEvent actionEvent) {
-        goBack(actionEvent);
+    public void cancelNote() {
+        goBack();
     }
 
-    public void deleteNote(ActionEvent actionEvent) {
+    public void deleteNote() {
         Note.delete(this.index);
-        goBack(actionEvent);
+        goBack();
     }
 
-    private void goBack(Event event) {
-        changeScene("controllers/NotesView.fxml", event);
+    private void goBack() {
+        changeScene("controllers/NotesView.fxml");
     }
 }

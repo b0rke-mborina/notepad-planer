@@ -8,18 +8,38 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 
-public class Model {
+/**
+ * Osnovna abstraktna klasa za potporu okvira učestalih funkcionalnosti modela aplikacije.
+ *
+ * @author Rafael
+ */
+abstract class Model {
+    /**
+     * Sprema retke u datoteku
+     *
+     * @param fileName Naziv datoteke
+     * @param args Lista redaka za spremanje
+     * @author Rafael
+     */
 
     protected static void saveToFile(String fileName, String[] args) {
         saveToFile(fileName, args, false);
     }
 
+    /**
+     * Sprema retke u datoteku.
+     *
+     * @param fileName Naziv datoteke
+     * @param args Lista redaka za spremanje
+     * @param override Opcija za brisanje trenutnog sadržaja datoteke. "True" -> izbriši podatke i piši na novo.
+     *                 "False" -> Dodaj nove podatke na stare podatke.
+     * @author Rafael
+     */
     protected static void saveToFile(String fileName, String[] args, boolean override) {
         try {
             Path path = Paths.get(fileName);
             File file = new File(fileName);
-            if (file.createNewFile()) System.out.println("First file created: " + fileName);
-            else System.out.println("First file already exists: " + file.getName());
+            file.createNewFile();
 
             if (override) {
                 Files.write(path, "".getBytes());
@@ -31,22 +51,27 @@ public class Model {
                 Files.write(path, "\n".getBytes(), StandardOpenOption.APPEND);
             }
         } catch (IOException err) {
-            System.out.println(err.getMessage());
+            err.printStackTrace();
         }
     }
 
+    /**
+     * Učitava retke datoteke.
+     *
+     * @param fileName Naziv datoteke
+     * @return Lista redaka datoteke
+     * @author Rafael
+     */
     protected static ArrayList<String> loadFile(String fileName) {
         ArrayList<String> lines = new ArrayList<>();
         Path path = Paths.get(fileName);
 
         try {
             File file = new File(fileName);
-            if (file.createNewFile()) System.out.println("First file created: " + fileName);
-            else System.out.println("First file already exists: " + file.getName());
-
+            file.createNewFile();
             lines = (ArrayList<String>) Files.readAllLines(path);
-        } catch (IOException ignored) {
-
+        } catch (IOException err) {
+            err.printStackTrace();
         }
 
         return lines;

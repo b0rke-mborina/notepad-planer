@@ -1,39 +1,37 @@
 package notepadplaner.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import notepadplaner.components.NavBar;
+import javafx.scene.layout.HBox;
 import notepadplaner.components.NoteComponent;
 import notepadplaner.models.Note;
 import java.util.ArrayList;
 
+/**
+ * @author Mateo, Rafael
+ */
 public class NotesController extends BaseController {
     @FXML
-    private Parent navBar;
-    @FXML
-    private NavBar navBarController;
+    private HBox root;
     @FXML
     private FlowPane contentBox;
 
+    public Node getRoot() {
+        return root;
+    }
+
     public void initialize() {
         ArrayList<Note> notes = Note.getAll();
-        // System.out.println(notes);
         for (Note note : notes) {
-            NoteComponent noteComponent = new NoteComponent(note, notes.indexOf(note) + 1);
-            contentBox.getChildren().add(noteComponent);
+            contentBox.getChildren().add(new NoteComponent(note, notes.indexOf(note) + 1));
         }
     }
 
-    public void addNewNote(ActionEvent event) {
-        changeScene("controllers/NewNoteView.fxml", event);
-    }
-
-    public void showNote(MouseEvent mouseEvent) {
-        setSceneUserDataFromNode((Node) mouseEvent.getSource());
-        changeScene("controllers/NoteView.fxml", mouseEvent);
+    /**
+     * @author Mateo, Rafael
+     */
+    public void addNewNote() {
+        changeScene("controllers/NewNoteView.fxml");
     }
 }

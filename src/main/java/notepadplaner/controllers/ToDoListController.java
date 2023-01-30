@@ -2,42 +2,42 @@ package notepadplaner.controllers;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import notepadplaner.models.TodoList;
 import notepadplaner.models.TodoListItem;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class ToDoListController extends BaseController {
-    public TextField titleField;
-    public VBox itemsListBox;
-    public HBox root;
-    public TodoList todoList;
+    @FXML
+    private HBox root;
+    @FXML
+    private TextField titleField;
+    @FXML
+    private VBox itemsListBox;
+    @FXML
+    private TodoList todoList;
     private int index;
 
+    public Node getRoot() {
+        return root;
+    }
+
     public void initialize() {
-        Platform.runLater(() -> {
-            Scene currentScene = root.getScene();
-            Stage currentStage = (Stage)currentScene.getWindow();
-            loadToDoList(Integer.parseInt(currentStage.getUserData().toString()));
-        });
+        Platform.runLater(() -> loadToDoList(Integer.parseInt(getStageUserData().toString())));
     }
 
     private void loadToDoList(int index) {
         this.index = index - 1;
-        todoList = TodoList.get(index - 1);
+        todoList = TodoList.get(this.index);
 
         titleField.setText(todoList.title);
         for (TodoListItem item : todoList.items) {
@@ -127,26 +127,16 @@ public class ToDoListController extends BaseController {
 
     private void removeItem(ActionEvent actionEvent) {
         Node btnNode = (Node) actionEvent.getSource();
-        int itemIndex = Integer.parseInt(btnNode.getUserData().toString());
-
-        Scene currentScene = root.getScene();
-        Stage currentStage = (Stage)currentScene.getWindow();
-        setSceneUserDataFromNode(root, currentStage.getUserData());
-
-        TodoList.removeItem(index, itemIndex);
-        changeScene("controllers/ToDoListView.fxml", actionEvent);
+        TodoList.removeItem(index, Integer.parseInt(btnNode.getUserData().toString()));
+        changeScene("controllers/ToDoListView.fxml");
     }
 
-    public void addItem(ActionEvent actionEvent) {
-        Scene currentScene = root.getScene();
-        Stage currentStage = (Stage)currentScene.getWindow();
-        setSceneUserDataFromNode(root, currentStage.getUserData());
-
+    public void addItem() {
         TodoList.addItem(index, new TodoListItem(""));
-        changeScene("controllers/ToDoListView.fxml", actionEvent);
+        changeScene("controllers/ToDoListView.fxml");
     }
 
-    public void saveToDoList(ActionEvent actionEvent) {
+    public void saveToDoList() {
         todoList.title = titleField.getText();
         List<Node> itemsBoxes = itemsListBox.getChildren();
         for (int i = 0; i < itemsBoxes.size(); i++) {
@@ -155,19 +145,19 @@ public class ToDoListController extends BaseController {
         }
 
         TodoList.edit(index, todoList);
-        goBack(actionEvent);
+        goBack();
     }
 
-    public void cancelToDoList(ActionEvent actionEvent) {
-        goBack(actionEvent);
+    public void cancelToDoList() {
+        goBack();
     }
 
-    public void deleteToDoList(ActionEvent actionEvent) {
+    public void deleteToDoList() {
         TodoList.delete(index);
-        goBack(actionEvent);
+        goBack();
     }
 
-    private void goBack(Event event) {
-        changeScene("controllers/ToDoListsView.fxml", event);
+    private void goBack() {
+        changeScene("controllers/ToDoListsView.fxml");
     }
 }

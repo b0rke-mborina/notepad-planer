@@ -7,6 +7,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            fx:id="root"
             fx:controller="notepadplaner.controllers.NoteComponentController"
             prefHeight="250.0" prefWidth="200.0"
             styleClass="component-border, bg-beige">

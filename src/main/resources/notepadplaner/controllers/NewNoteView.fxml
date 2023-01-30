@@ -9,6 +9,7 @@
 
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
+      fx:id="root"
       VBox.vgrow="ALWAYS"
       fx:controller="notepadplaner.controllers.NewNoteController"
       stylesheets="@../../css/app-styles.css"

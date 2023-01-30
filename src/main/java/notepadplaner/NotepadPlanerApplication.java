@@ -14,6 +14,9 @@ import notepadplaner.models.TodoList;
 import notepadplaner.models.TodoListItem;
 import java.util.ArrayList;
 
+/**
+ * @author Mateo, Rafael
+ */
 public class NotepadPlanerApplication extends Application {
     private static NotepadPlanerApplication applicationInstance;
     private Stage stage;
@@ -85,6 +88,11 @@ public class NotepadPlanerApplication extends Application {
         launch();
     }
 
+    /**
+     * Primjeri CRUD operacija nad Notama
+     *
+     * @author Rafael
+     */
     private static void crudExampleNotes() {
         // Get one Note
         Note note2 = Note.get(0);
@@ -110,6 +118,11 @@ public class NotepadPlanerApplication extends Application {
         Note.delete(0);
     }
 
+    /**
+     * Primjeri CRUD operacija nad TodoList
+     *
+     * @author Rafael
+     */
     private static void crudExampleTodoList() {
         // Get TodoList
         TodoList todoList2 = TodoList.get(0);
@@ -128,7 +141,7 @@ public class NotepadPlanerApplication extends Application {
                 new TodoListItem("Item 2"),
                 new TodoListItem("Item 3"),
         });
-        todoList1.saveToFile();
+        TodoList.create(todoList1);
 
         // Edit TodoList example
         TodoList todoList3 = TodoList.get(0);
@@ -141,6 +154,11 @@ public class NotepadPlanerApplication extends Application {
         TodoList.delete(0);
     }
 
+    /**
+     * Primjeri CRUD operacija nad TodoListItem
+     *
+     * @author Rafael
+     */
     private static void crudExampleTodoListItem() {
         // Remove item from list
         TodoList.removeItem(1, 0);
@@ -149,7 +167,5 @@ public class NotepadPlanerApplication extends Application {
         // Add empty item on List
         TodoList.addItem(1, new TodoListItem("Abcd", false));
         TodoList.addItem(2, new TodoListItem("Abcdee", true));
-
-        // Todo: Error handling + custom exceptions
     }
 }

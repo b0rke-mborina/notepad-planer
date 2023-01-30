@@ -1,15 +1,15 @@
 package notepadplaner.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class NoteComponentController extends BaseController implements Initializable {
+public class NoteComponentController extends BaseController {
+    @FXML
+    private AnchorPane root;
     @FXML
     public Text titleText;
     @FXML
@@ -17,13 +17,11 @@ public class NoteComponentController extends BaseController implements Initializ
     @FXML
     public Button showButton;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // System.out.println(showButton.getUserData());
+    public Node getRoot() {
+        return root;
     }
 
     public void showNote(MouseEvent mouseEvent) {
-        setSceneUserDataFromNode((Node) mouseEvent.getSource());
         changeScene("controllers/NoteView.fxml", mouseEvent);
     }
 }

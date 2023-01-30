@@ -6,9 +6,10 @@
 <?import javafx.scene.text.Text?>
 
 <GridPane xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="notepadplaner.controllers.ToDoListComponentController"
-      prefHeight="60.0" hgap="16" GridPane.hgrow="ALWAYS" styleClass="component-border, bg-beige">
+          xmlns:fx="http://javafx.com/fxml"
+          fx:id="root"
+          fx:controller="notepadplaner.controllers.ToDoListComponentController"
+          prefHeight="60.0" hgap="16" GridPane.hgrow="ALWAYS" styleClass="component-border, bg-beige">
     <columnConstraints>
         <ColumnConstraints percentWidth="35" />
         <ColumnConstraints percentWidth="35" />

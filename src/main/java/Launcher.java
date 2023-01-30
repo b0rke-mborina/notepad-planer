@@ -1,3 +1,5 @@
+package skip;
+
 import notepadplaner.NotepadPlanerApplication;
 
 public class Launcher {

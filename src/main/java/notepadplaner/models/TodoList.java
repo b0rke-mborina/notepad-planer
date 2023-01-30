@@ -2,33 +2,50 @@ package notepadplaner.models;
 
 import java.util.ArrayList;
 
+/**
+ * Model TodoList aplikacije sa podrškom CRUD operacija.
+ *
+ * @author Rafael
+ */
 public class TodoList extends Model {
     public String title;
     public TodoListItem[] items;
     private static final String fileName = "todos.txt";
 
+    /**
+     * Konstruktor TodoList.
+     *
+     * @param title Naslov
+     * @param items Stavke
+     * @author Rafael
+     */
     public TodoList(String title, TodoListItem[] items) {
         this.title = title;
         this.items = items;
     }
 
-    public void saveToFile() {
-        ArrayList<String> listItemsData = getListItemsString();
-        listItemsData.add(0, "-" + title);
+    /**
+     * Sprema TodoList u bazu.
+     *
+     * @param todoList TodoList
+     * @author Rafael
+     */
+    public static void create(TodoList todoList) {
+        ArrayList<String> listItemsData = new ArrayList<>();
+        for (TodoListItem item: todoList.items)
+        {
+            listItemsData.add(item.toString());
+        }
+        listItemsData.add(0, "-" + todoList.title);
         saveToFile(fileName, listItemsData.toArray(new String[0]));
     }
 
-    private ArrayList<String> getListItemsString() {
-        ArrayList<String> listItemsString = new ArrayList<>();
-
-        for (TodoListItem item: items)
-        {
-            listItemsString.add(item.toString());
-        }
-
-        return listItemsString;
-    }
-
+    /**
+     * Dohvaća sve TodoListe iz baze.
+     *
+     * @return Lista TodoList iz baze
+     * @author Rafael
+     */
     public static ArrayList<TodoList> getAll() {
         ArrayList<TodoList> todoLists = new ArrayList<>();
         ArrayList<String> data = loadFile(fileName);
@@ -58,8 +75,15 @@ public class TodoList extends Model {
         return todoLists;
     }
 
-    public static TodoList get(int index) {
-        ArrayList<String> data = loadFile(fileName);
+    /**
+     * Vraća pointer index na data.
+     *
+     * @param data Lista redaka
+     * @param index Brojać TodoList-a
+     * @return Index koji pokazuje na prvi redak nakon "index" broja TodoList-i
+     * @author Rafael
+     */
+    private static int getDataIndex(ArrayList<String> data, int index) {
         int counter = 0;
         int dataIndex = 0;
         for (String row : data) {
@@ -73,6 +97,20 @@ public class TodoList extends Model {
 
             dataIndex++;
         }
+
+        return dataIndex;
+    }
+
+    /**
+     * Dohvaća TodoList iz baze po pripadajućem indexu.
+     *
+     * @param index Pripadajuć index (počinje od 0)
+     * @return TodoList iz baze
+     * @author Rafael
+     */
+    public static TodoList get(int index) {
+        ArrayList<String> data = loadFile(fileName);
+        int dataIndex = getDataIndex(data, index);
 
         String title = data.get(dataIndex).substring(1);
         ArrayList<TodoListItem> listItems = new ArrayList<>();
@@ -87,24 +125,17 @@ public class TodoList extends Model {
         return new TodoList(title, listItems.toArray(new TodoListItem[0]));
     }
 
+    /**
+     * Briše TodoList iz baze po pripadajućem indexu.
+     *
+     * @param index Pripadajuć index (počinje od 0)
+     * @author Rafael
+     */
     public static void delete(int index) {
         ArrayList<String> data = loadFile(fileName);
-        int counter = 0;
-        int dataIndex = 0;
-        for (String row : data) {
-            if (row.charAt(0) == '-') {
-                counter++;
-            }
-
-            if (counter > index) {
-                break;
-            }
-
-            dataIndex++;
-        }
+        int dataIndex = getDataIndex(data, index);
 
         data.remove(dataIndex);
-
         while (data.size() > dataIndex && data.get(dataIndex).charAt(0) != '-') {
             data.remove(dataIndex);
         }
@@ -112,21 +143,16 @@ public class TodoList extends Model {
         saveToFile(fileName, data.toArray(new String[0]), true);
     }
 
+    /**
+     * Uređuje TodoList iz baze po pripadajućem indexu.
+     *
+     * @param index Pripadajuć index (počinje od 0)
+     * @param todoListObj Uređen TodoList
+     * @author Rafael
+     */
     public static void edit(int index, TodoList todoListObj) {
         ArrayList<String> data = loadFile(fileName);
-        int counter = 0;
-        int dataIndex = 0;
-        for (String row : data) {
-            if (row.charAt(0) == '-') {
-                counter++;
-            }
-
-            if (counter > index) {
-                break;
-            }
-
-            dataIndex++;
-        }
+        int dataIndex = getDataIndex(data, index);
 
         data.set(dataIndex, "-" + todoListObj.title);
         dataIndex++;
@@ -140,24 +166,18 @@ public class TodoList extends Model {
         saveToFile(fileName, data.toArray(new String[0]), true);
     }
 
+    /**
+     * Dodaje stavku na TodoList iz baze po pripadajućem indexu.
+     *
+     * @param index Pripadajuć index TodoList-e (počinje od 0)
+     * @param todoListItem Stavka
+     * @author Rafael
+     */
     public static void addItem(int index, TodoListItem todoListItem) {
         ArrayList<String> data = loadFile(fileName);
-        int counter = 0;
-        int dataIndex = 0;
-        for (String row : data) {
-            if (row.charAt(0) == '-') {
-                counter++;
-            }
-
-            if (counter > index) {
-                break;
-            }
-
-            dataIndex++;
-        }
+        int dataIndex = getDataIndex(data, index);
 
         dataIndex++;
-
         while (data.size() > dataIndex && data.get(dataIndex).charAt(0) != '-') {
             dataIndex++;
         }
@@ -167,29 +187,28 @@ public class TodoList extends Model {
         saveToFile(fileName, data.toArray(new String[0]), true);
     }
 
+    /**
+     * Uklanja stavku sa TodoList iz baze po pripadajućem indexu.
+     *
+     * @param listIndex Pripadajuć index TodoList-e (počinje od 0)
+     * @param itemIndex Pripadajuć index stavke (počinje od 0)
+     * @author Rafael
+     */
     public static void removeItem(int listIndex, int itemIndex) {
         ArrayList<String> data = loadFile(fileName);
-        int counter = 0;
-        int dataIndex = 0;
-        for (String row : data) {
-            if (row.charAt(0) == '-') {
-                counter++;
-            }
-
-            if (counter > listIndex) {
-                break;
-            }
-
-            dataIndex++;
-        }
+        int dataIndex = getDataIndex(data, listIndex);
 
         dataIndex++;
-
         data.remove(dataIndex + itemIndex);
 
         saveToFile(fileName, data.toArray(new String[0]), true);
     }
 
+    /**
+     * Pomoćna funkcija za ispis TodoList.
+     *
+     * @author Rafael
+     */
     public void print() {
         System.out.println("[TODO List] Title: " + title);
 

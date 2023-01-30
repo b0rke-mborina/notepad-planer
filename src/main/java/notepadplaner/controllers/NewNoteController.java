@@ -1,32 +1,40 @@
 package notepadplaner.controllers;
 
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.scene.Scene;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import notepadplaner.models.Note;
 
+/**
+ * @author Mateo, Rafael
+ */
 public class NewNoteController extends BaseController {
-    public TextField titleField;
-    public TextArea noteField;
+    @FXML
+    private HBox root;
+    @FXML
+    private TextField titleField;
+    @FXML
+    private TextArea noteField;
 
-    public void createNote(ActionEvent actionEvent) {
-        Note.create(new Note(
-            titleField.getText(),
-            noteField.getText()
-        ));
-        goBack(actionEvent);
+    public Node getRoot() {
+        return root;
     }
 
-    public void cancelNote(ActionEvent actionEvent) {
-        goBack(actionEvent);
+    /**
+     * @author Mateo, Rafael
+     */
+    public void createNote() {
+        Note.create(new Note(titleField.getText(), noteField.getText()));
+        goBack();
     }
 
-    private void goBack(Event event) {
-        changeScene("controllers/NotesView.fxml", event);
+    public void cancelNote() {
+        goBack();
+    }
+
+    private void goBack() {
+        changeScene("controllers/NotesView.fxml");
     }
 }

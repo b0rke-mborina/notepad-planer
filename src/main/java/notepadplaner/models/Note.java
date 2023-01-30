@@ -2,14 +2,25 @@ package notepadplaner.models;
 
 import java.util.ArrayList;
 
+/**
+ * Model Note aplikacije sa podrškom CRUD operacija
+ *
+ * @author Rafael
+ */
 public class Note extends Model {
     public String title;
     public String note;
     private String shortNote;
-    private String shortTitle;
-
+    private final String shortTitle;
     private static final String fileName = "notes.txt";
 
+    /**
+     * Konstruktor note. Stvara notu i postavlja odgovarajuću verziju kratog naslova i note.
+     *
+     * @param title Naslov
+     * @param note Nota
+     * @author Rafael
+     */
     public Note(String title, String note) {
         this.title = title;
         this.note = note;
@@ -28,19 +39,44 @@ public class Note extends Model {
         }
     }
 
+    /**
+     * ShortNote getter.
+     *
+     * @return Kratka nota
+     * @author Rafael
+     */
     public String getShortNote() {
         return shortNote;
     }
 
+    /**
+     * ShortTitle getter.
+     *
+     * @return Kratal naslov
+     * @author Rafael
+     */
     public String getShortTitle() {
         return shortTitle;
     }
 
+    /**
+     * Sprema Notu u bazu.
+     *
+     * @param note Nota
+     * @author Rafael
+     */
     public static void create(Note note) {
         encodeNewline(note);
         saveToFile(fileName, new String[] {note.title, note.note});
     }
 
+    /**
+     * Dohvaća Notu iz baze po pripadajućem indexu.
+     *
+     * @param index Pripadajuć index (počinje od 0)
+     * @return Nota iz baze
+     * @author Rafael
+     */
     public static Note get(int index) {
         ArrayList<String> data = loadFile(fileName);
 
@@ -49,6 +85,12 @@ public class Note extends Model {
         return note;
     }
 
+    /**
+     * Dohvaća sve Note iz baze.
+     *
+     * @return Lista Nota iz baze
+     * @author Rafael
+     */
     public static ArrayList<Note> getAll() {
         ArrayList<Note> notes = new ArrayList<>();
         ArrayList<String> data = loadFile(fileName);
@@ -62,6 +104,12 @@ public class Note extends Model {
         return notes;
     }
 
+    /**
+     * Briše Notu iz baze po pripadajućem indexu.
+     *
+     * @param index Pripadajuć index (počinje od 0)
+     * @author Rafael
+     */
     public static void delete(int index) {
         ArrayList<String> data = loadFile(fileName);
 
@@ -71,6 +119,13 @@ public class Note extends Model {
         saveToFile(fileName, data.toArray(new String[0]), true);
     }
 
+    /**
+     * Uređuje Notu iz baze po pripadajućem indexu.
+     *
+     * @param index Pripadajuć index (počinje od 0)
+     * @param noteObj Uređena Nota
+     * @author Rafael
+     */
     public static void edit(int index, Note noteObj) {
         encodeNewline(noteObj);
         ArrayList<String> data = loadFile(fileName);
@@ -81,15 +136,32 @@ public class Note extends Model {
         saveToFile(fileName, data.toArray(new String[0]), true);
     }
 
+    /**
+     * Pomoćna funkcija za ispis Note.
+     *
+     * @author Rafael
+     */
     public void print() {
         System.out.println("[Note] Title: " + title);
         System.out.println("[Note] Note: " + note);
     }
 
+    /**
+     * Enkodira nove retke u Noti u svrhu spremanja.
+     *
+     * @param note Nota za enkodiranje
+     * @author Rofael
+     */
     private static void encodeNewline(Note note) {
         note.note = note.note.replaceAll("\n", "\\\\n").replaceAll("\r", "\\\\r");
     }
 
+    /**
+     * Dekodira nove retke u Noti u svrhu učitavanja.
+     *
+     * @param note Nota za dekodiranje
+     * @author Rofael
+     */
     private static void decodeNewline(Note note) {
         note.note = note.note.replaceAll("\\\\n", "\n").replaceAll("\\\\r", "\r");
     }
