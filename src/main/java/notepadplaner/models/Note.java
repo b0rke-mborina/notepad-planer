@@ -8,10 +8,29 @@ import java.util.ArrayList;
  * @author Rafael
  */
 public class Note extends Model {
+    /**
+     * Title of the note.
+     */
     public String title;
+
+    /**
+     * Body of the note.
+     */
     public String note;
+
+    /**
+     * Note body for display in component.
+     */
     private String shortNote;
+
+    /**
+     * Note title for display in component.
+     */
     private final String shortTitle;
+
+    /**
+     * Name of file which contains saved notes.
+     */
     private static final String fileName = "notes.txt";
 
     /**

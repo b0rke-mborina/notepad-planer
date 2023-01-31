@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import notepadplaner.NotepadPlanerApplication;
 import notepadplaner.interfaces.IController;
-
 import java.util.Objects;
 
 /**

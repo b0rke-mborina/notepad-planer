@@ -30,10 +30,16 @@
     /*-fx-border-radius: 16px;*/
 }
 
+
+/* List box styles */
+
 .content-flex-box {
     -fx-vgap: 16px;
     -fx-hgap: 16px;
 }
+
+
+/* Text field and text area styles */
 
 .text-field-area {
     -fx-border-width: 2px;
@@ -44,6 +50,9 @@
 .text-field-area .content {
     -fx-background-color: #FFD94F;
 }
+
+
+/* Border styles */
 
 .component-border {
     -fx-border-width: 2px;

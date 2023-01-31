@@ -6,7 +6,14 @@ package notepadplaner.models;
  * @author Rafael
  */
 public class TodoListItem {
+    /**
+     * State of completion of the to-do list item.
+     */
     public boolean checked;
+
+    /**
+     * Text of the to-do list item.
+     */
     public String text;
 
     /**

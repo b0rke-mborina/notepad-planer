@@ -15,25 +15,58 @@ import notepadplaner.models.TodoListItem;
 import java.util.ArrayList;
 
 /**
+ * Main application class. Extends Application class.
+ *
  * @author Mateo, Rafael
  */
 public class NotepadPlanerApplication extends Application {
+    /**
+     * Bound application instance. Used in navbar for navigation.
+     */
     private static NotepadPlanerApplication applicationInstance;
+
+    /**
+     * Stage of the application. Its scene is changed on navigation.
+     */
     private Stage stage;
+
+    /**
+     * FXML notes button element injection / reference. Used as one of the main options in main scene.
+     */
     @FXML
     private Button notesButton;
+
+    /**
+     * FXML to-do lists button element injection / reference. Used as one of the main options in main scene.
+     */
     @FXML
     private Button toDoListsButton;
 
+    /**
+     * ApplicationInstance getter.
+     *
+     * @return applicationInstance
+     * @author Mateo
+     */
     public static NotepadPlanerApplication getApplicationInstance() {
         return applicationInstance;
     }
 
+    /**
+     * NotepadPlanerApplication class initialization method. Executes on class initialization. Sets applicationInstance.
+     *
+     * @author Mateo
+     */
     @Override
     public void init() {
         applicationInstance = this;
     }
 
+    /**
+     * Loads main view. Sets application stage and window properties.
+     *
+     * @author Mateo
+     */
     @Override
     public void start(Stage stage) {
         this.stage = stage;
@@ -50,6 +83,13 @@ public class NotepadPlanerApplication extends Application {
         }
     }
 
+    /**
+     * Overloaded method. Changes scene. Uses button element as invocation location.
+     *
+     * @param url URL of view to load.
+     * @param button Element from which the function was called.
+     * @author Mateo
+     */
     public void changeScene(String url, Button button) {
         try {
             Scene currentScene = button.getScene();
@@ -62,6 +102,13 @@ public class NotepadPlanerApplication extends Application {
         }
     }
 
+    /**
+     * Overloaded method. Changes scene. Uses hyperlink element as invocation location.
+     *
+     * @param url URL of view to load.
+     * @param hyperlink Element from which the function was called.
+     * @author Mateo
+     */
     public void changeScene(String url, Hyperlink hyperlink) {
         try {
             Scene currentScene = hyperlink.getScene();
@@ -74,16 +121,36 @@ public class NotepadPlanerApplication extends Application {
         }
     }
 
+    /**
+     * FXML goToNotes method injection / reference and implementation. Changes scene to list of notes by calling
+     * changeScene method.
+     *
+     * @param event Action event, Not used in method.
+     * @author Mateo
+     */
     @FXML
     public void goToNotes(ActionEvent event) {
         changeScene("controllers/NotesView.fxml", notesButton);
     }
 
+    /**
+     * FXML goToToDoLists method injection / reference and implementation. Changes scene to list of to-do lists by
+     * calling changeScene method.
+     *
+     * @param event Action event, Not used in method.
+     * @author Mateo
+     */
     @FXML
     public void goToToDoLists(ActionEvent event) {
         changeScene("controllers/ToDoListsView.fxml", toDoListsButton);
     }
 
+    /**
+     * Class main function. Launches the application. Also used for launching the application in production JAR.
+     *
+     * @param args Action event, Not used in method.
+     * @author Mateo
+     */
     public static void main(String[] args) {
         launch();
     }

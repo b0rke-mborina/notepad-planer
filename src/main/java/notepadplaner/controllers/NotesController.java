@@ -12,15 +12,33 @@ import java.util.ArrayList;
  * @author Mateo, Rafael
  */
 public class NotesController extends BaseController {
+    /**
+     * FXML root element of view injection / reference. Used for saving data.
+     */
     @FXML
     private HBox root;
+
+    /**
+     * FXML flow pane element of view injection / reference. Used as parent (list) for adding note components (items).
+     */
     @FXML
     private FlowPane contentBox;
 
+    /**
+     * Root getter.
+     *
+     * @return Node
+     * @author Rafael
+     */
     public Node getRoot() {
         return root;
     }
 
+    /**
+     * Loads all notes from TXT file in a shape of note components and adds them to content box.
+     *
+     * @author Mateo, Rafael
+     */
     public void initialize() {
         ArrayList<Note> notes = Note.getAll();
         for (Note note : notes) {
@@ -29,8 +47,11 @@ public class NotesController extends BaseController {
     }
 
     /**
+     * Changes to view / scene for creating new note.
+     *
      * @author Mateo, Rafael
      */
+    @FXML
     public void addNewNote() {
         changeScene("controllers/NewNoteView.fxml");
     }

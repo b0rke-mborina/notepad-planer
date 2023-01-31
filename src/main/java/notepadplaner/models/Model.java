@@ -21,7 +21,6 @@ abstract class Model {
      * @param args Lista redaka za spremanje
      * @author Rafael
      */
-
     protected static void saveToFile(String fileName, String[] args) {
         saveToFile(fileName, args, false);
     }

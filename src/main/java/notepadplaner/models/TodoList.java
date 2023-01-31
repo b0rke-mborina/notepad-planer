@@ -8,8 +8,19 @@ import java.util.ArrayList;
  * @author Rafael
  */
 public class TodoList extends Model {
+    /**
+     * Title of the to-do list.
+     */
     public String title;
+
+    /**
+     * Items of the to-do list. Are an Array of TodoListItems.
+     */
     public TodoListItem[] items;
+
+    /**
+     * Name of file which contains saved to-do lists.
+     */
     private static final String fileName = "todos.txt";
 
     /**
