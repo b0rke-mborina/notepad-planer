@@ -7,31 +7,38 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 
+<!-- FXML view for new Note, used as UI for creating new note -->
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:id="root"
-      VBox.vgrow="ALWAYS"
       fx:controller="notepadplaner.controllers.NewNoteController"
-      stylesheets="@../../css/app-styles.css"
-      styleClass="bg-beige">
+      VBox.vgrow="ALWAYS"
+      stylesheets="@../../css/app-styles.css" styleClass="bg-beige">
+    <!-- Navbar component is included into view -->
     <fx:include fx:id="navBar" source="../components/NavBar.fxml" />
+    <!-- Main box -->
     <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+        <!-- View heading -->
         <HBox prefHeight="120" alignment="CENTER" styleClass="bg-beige">
             <padding>
                 <Insets top="20.0" bottom="20.0" />
             </padding>
             <Text text="Note" textAlignment="CENTER" styleClass="fw-bold, fs-24" />
         </HBox>
+        <!-- Note main content -->
         <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS" spacing="40">
             <padding>
                 <Insets top="20.0" bottom="20.0" left="40" right="40" />
             </padding>
+            <!-- Note title TextField -->
             <AnchorPane>
                 <TextField fx:id="titleField" styleClass="fs-20, bg-orange, text-field-area"
                             AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
             </AnchorPane>
+            <!-- Note body TextArea -->
             <TextArea fx:id="noteField" styleClass="fs-16, bg-beige, text-field-area" />
         </VBox>
+        <!-- Note action buttons -->
         <HBox alignment="CENTER" spacing="20">
             <padding>
                 <Insets top="20.0" bottom="20.0" left="40" right="40" />

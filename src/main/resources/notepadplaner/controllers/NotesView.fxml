@@ -5,26 +5,31 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 
+<!-- FXML view for Notes, used for showing list of existing notes -->
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      VBox.vgrow="ALWAYS"
       fx:id="root"
       fx:controller="notepadplaner.controllers.NotesController"
-      stylesheets="@../../css/app-styles.css"
-      styleClass="bg-beige">
+      VBox.vgrow="ALWAYS"
+      stylesheets="@../../css/app-styles.css" styleClass="bg-beige">
+    <!-- Navbar component is included into view -->
     <fx:include fx:id="navBar" source="../components/NavBar.fxml"/>
+    <!-- Main box -->
     <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+        <!-- View heading -->
         <HBox prefHeight="120" alignment="CENTER" styleClass="bg-beige">
             <padding>
                 <Insets top="20.0" bottom="20.0" />
             </padding>
             <Text text="Notes" textAlignment="CENTER" styleClass="fw-bold, fs-24" />
         </HBox>
+        <!-- Container for Note components, components are added here dynamically -->
         <FlowPane fx:id="contentBox" alignment="TOP_CENTER" styleClass="content-flex-box">
             <padding>
                 <Insets left="20.0" right="20.0" />
             </padding>
         </FlowPane>
+        <!-- New note button -->
         <HBox alignment="CENTER" styleClass="bg-beige">
             <padding>
                 <Insets top="16.0" bottom="16.0" />

@@ -5,13 +5,13 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.geometry.Insets?>
 
+<!-- Navbar FXML component, used for app navigation -->
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="notepadplaner.components.NavBar"
-            prefWidth="240.0"
-            VBox.vgrow="ALWAYS"
-            stylesheets="@../../css/app-styles.css"
-            styleClass="mw-240, bg-orange">
+            prefWidth="240.0" VBox.vgrow="ALWAYS"
+            stylesheets="@../../css/app-styles.css" styleClass="mw-240, bg-orange">
+    <!-- App name / navbar heading -->
     <VBox prefWidth="240.0" minWidth="240.0" VBox.vgrow="ALWAYS" alignment="CENTER"
           AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <padding>
@@ -20,6 +20,7 @@
         <Text text="Notepad" textAlignment="CENTER" styleClass="mw-240, fs-30, fw-bold" />
         <Text text="Planer" textAlignment="CENTER" styleClass="mw-240, fs-30, fw-bold" />
     </VBox>
+    <!-- Navbar links -->
     <VBox prefWidth="240.0" VBox.vgrow="ALWAYS" spacing="8"
               AnchorPane.topAnchor="128.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <padding>
@@ -28,6 +29,7 @@
         <Hyperlink fx:id="notesNavLink" onAction="#goToNotes" text="Notes" styleClass="link, fs-20" />
         <Hyperlink fx:id="toDoListsNavLink" onAction="#goToToDoLists" text="To-do lists" styleClass="link, fs-20" />
     </VBox>
+    <!-- Button for returning to main screen -->
     <HBox VBox.vgrow="ALWAYS" alignment="BOTTOM_CENTER"
           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <padding>

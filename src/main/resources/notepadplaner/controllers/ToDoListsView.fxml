@@ -5,26 +5,31 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Button?>
 
+<!-- FXML view for ToDoLists, used for showing list of existing to-do lists -->
 <HBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      VBox.vgrow="ALWAYS"
       fx:id="root"
       fx:controller="notepadplaner.controllers.ToDoListsController"
-      stylesheets="@../../css/app-styles.css"
-      styleClass="bg-beige">
+      VBox.vgrow="ALWAYS"
+      stylesheets="@../../css/app-styles.css" styleClass="bg-beige">
+    <!-- Navbar component is included into view -->
     <fx:include fx:id="navBar" source="../components/NavBar.fxml"/>
+    <!-- Main box -->
     <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+        <!-- View heading -->
         <HBox prefHeight="120" alignment="CENTER" styleClass="bg-beige">
             <padding>
                 <Insets top="20.0" bottom="20.0" />
             </padding>
             <Text text="To-do lists" textAlignment="CENTER" styleClass="fw-bold, fs-24" />
         </HBox>
+        <!-- Container for ToDoList components, components are added here dynamically -->
         <VBox fx:id="contentBox" alignment="TOP_CENTER" spacing="16" styleClass="content-flex-box">
             <padding>
                 <Insets left="20.0" right="20.0" />
             </padding>
         </VBox>
+        <!-- New to-do list button -->
         <HBox alignment="CENTER" styleClass="bg-beige">
             <padding>
                 <Insets top="16.0" bottom="16.0" />

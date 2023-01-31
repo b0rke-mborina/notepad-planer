@@ -9,5 +9,3 @@
 -Test title 3
 0Item
 1zwerrz
--New list
-0Task 1

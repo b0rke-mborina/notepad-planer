@@ -5,32 +5,40 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.geometry.Insets?>
 
+<!-- FXML view for new ToDoList, used as UI for moderating to-do list -->
 <HBox xmlns="http://javafx.com/javafx"
-      fx:id="root"
       xmlns:fx="http://javafx.com/fxml"
-      VBox.vgrow="ALWAYS"
+      fx:id="root"
       fx:controller="notepadplaner.controllers.ToDoListController"
-      stylesheets="@../../css/app-styles.css"
-      styleClass="bg-beige">
+      VBox.vgrow="ALWAYS"
+      stylesheets="@../../css/app-styles.css" styleClass="bg-beige">
+    <!-- Navbar component is included into view -->
     <fx:include fx:id="navBar" source="../components/NavBar.fxml"/>
+    <!-- Main box -->
     <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+        <!-- View heading -->
         <HBox prefHeight="120" alignment="CENTER" styleClass="bg-beige">
             <padding>
                 <Insets top="20.0" bottom="20.0" />
             </padding>
             <Text text="To-do list" textAlignment="CENTER" styleClass="fw-bold, fs-24" />
         </HBox>
+        <!-- ToDoList main content -->
         <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS" spacing="40">
             <padding>
                 <Insets top="20.0" bottom="20.0" left="40" right="40" />
             </padding>
+            <!-- ToDoList title TextField -->
             <AnchorPane>
                 <TextField fx:id="titleField" styleClass="fs-20, bg-orange, text-field-area"
                            AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
             </AnchorPane>
-            <VBox fx:id="itemsListBox" spacing="16"><!-- <TextField /> --></VBox>
+            <!-- ToDoList items box -->
+            <VBox fx:id="itemsListBox" spacing="16"><!-- HBox elements for items are added here --></VBox>
+            <!-- ToDoList add new item button -->
             <Button text="+" onAction="#addItem" styleClass="button, bg-orange, fs-16" />
         </VBox>
+        <!-- ToDoList action buttons -->
         <HBox alignment="CENTER" spacing="20">
             <padding>
                 <Insets top="20.0" bottom="20.0" left="40" right="40" />

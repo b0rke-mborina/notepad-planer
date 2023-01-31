@@ -5,11 +5,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Text?>
 
+<!-- FXML view for ToDoList component, used for showing to-do lists in list -->
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:id="root"
           fx:controller="notepadplaner.controllers.ToDoListComponentController"
-          prefHeight="60.0" hgap="16" GridPane.hgrow="ALWAYS" styleClass="component-border, bg-beige">
+          prefHeight="60.0" hgap="16" GridPane.hgrow="ALWAYS"
+          styleClass="component-border, bg-beige">
+    <!-- ToDoList component structure -->
     <columnConstraints>
         <ColumnConstraints percentWidth="35" />
         <ColumnConstraints percentWidth="35" />
@@ -18,14 +21,17 @@
     <rowConstraints>
         <RowConstraints percentHeight="100" />
     </rowConstraints>
+    <!-- To-do list heading text -->
     <VBox spacing="40" styleClass="bg-orange" alignment="CENTER" GridPane.hgrow="always" GridPane.vgrow="always"
           GridPane.rowIndex="0" GridPane.columnIndex="0">
         <Text fx:id="titleText" styleClass="fs-16, fw-bold" />
     </VBox>
+    <!-- To-do list percentage of completion -->
     <VBox alignment="CENTER" GridPane.hgrow="always"  GridPane.vgrow="always"
           GridPane.rowIndex="0" GridPane.columnIndex="1">
         <Text fx:id="toDoListPercentage" styleClass="fs-16" />
     </VBox>
+    <!-- Show to-do list button -->
     <VBox styleClass="bg-beige" alignment="CENTER" GridPane.hgrow="always" GridPane.vgrow="always"
           GridPane.rowIndex="0" GridPane.columnIndex="2">
         <padding>
